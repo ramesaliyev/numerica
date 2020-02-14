@@ -20,10 +20,12 @@ def graph(x, dx=1, epsilon=0.1):
     if hasSameSign(y, prevY):
       prevY = y
       prevX = x
-    elif abs(x - prevX) < epsilon:
-      return (x + prevX) / 2
+    elif abs(x - prevX) > epsilon:
+      x = prevX
+      y = prevY
+      dx /= 2
     else:
-      return graph(prevX, dx/2, epsilon)
+      return (x + prevX) / 2
 
 print(fn(1))
 print(fn(5))
@@ -35,5 +37,5 @@ print(hasSameSign(-1, 1))
 print(graph(0))
 print(graph(2))
 
-print(graph(0, epsilon=0.001))
-print(graph(2, epsilon=0.001))
+print(graph(0.12, epsilon=0.00000000000001))
+print(graph(2.12, epsilon=0.00000000000001))
