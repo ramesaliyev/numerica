@@ -1,4 +1,5 @@
-from utils.math import haveSameSign
+def haveSameSign(a, b):
+  return (a >= 0) == (b >= 0)
 
 def graph(fn, dx=1, epsilon=0.1, x=0):
   prevX = x
