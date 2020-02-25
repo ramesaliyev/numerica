@@ -4,7 +4,7 @@ def _fnx(degree, coefficients, baseExp, x):
   result = 0
 
   for exp in range(0, degree + 1):
-    result += coefficients[exp] * (x ** exp)
+    result += coefficients[degree - exp] * (x ** exp)
 
   return result ** baseExp
 
