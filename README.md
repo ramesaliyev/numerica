@@ -9,8 +9,8 @@ My own experimental implementations of numerical methods as homework.
 ## Preparation
     import numerica as n
 
-    fn1 = n.fnx(degree=2, coefficients=[1, -6, 5], baseExp=1) # (x^2 - 6x + 5)^1
-    fn2 = n.fnx(degree=3, coefficients=[1, -6.5, 13.5, -9], baseExp=1) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
+    fn1 = n.fnx([1, -6, 5]) # (x^2 - 6x + 5)^1
+    fn2 = n.fnx([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
 
 ## Solving Nonlinear Equations
 ### Root Bracketing Methods
@@ -35,8 +35,7 @@ My own experimental implementations of numerical methods as homework.
     print(root1, root2, root3) # 1.5, 2, 3
 
 ### Iterative Methods
-#### Fixed-Point Iteration
-
+#### Basic Iteration
 
 # Resources
 - YTU Numerical Analysis Lecture Notes
@@ -45,11 +44,11 @@ My own experimental implementations of numerical methods as homework.
 # Testing Package
 ##### Test Directly as Script
     python3.8 -m numerica
-##### or Install Local Package
+##### or Install Package Locally (from repo root dir)
     pip3.8 install .
 ##### and Test It from REPL
     import numerica
-    numerica.utils.function.fnx(2, [5, -6, 1], 1, 5) == 0
+    numerica.utils.function.fnx([1, -6, 5], 1)(5) == 0
 
 # Uploading to PyPI
 ##### Install Twine
