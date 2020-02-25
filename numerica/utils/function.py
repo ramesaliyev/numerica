@@ -1,6 +1,6 @@
 from functools import partial
 
-def _fnx(coeff=[], baseExp=1, x=0):
+def fnx(coeff=[], baseExp=1, x=0):
   result = 0
 
   exp = len(coeff)
@@ -10,5 +10,8 @@ def _fnx(coeff=[], baseExp=1, x=0):
 
   return result ** baseExp
 
-def fnx(coeff=[], baseExp=1):
-  return partial(_fnx, coeff, baseExp)
+def c(outer, inner):
+  return lambda x: outer(inner(x))
+
+def f(coeff, baseExp=1):
+  return partial(fnx, coeff, baseExp)
