@@ -1,7 +1,5 @@
 import math
-
-def haveSameSign(a, b):
-  return (a >= 0) == (b >= 0)
+from ...utils.math import haveSameSign
 
 def bisection(fn, epsilon=0.1, a=-10, b=10):
   prevC = math.inf # infinity
