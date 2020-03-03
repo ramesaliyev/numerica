@@ -40,27 +40,30 @@ My own experimental implementations of numerical methods as homework.
     # f = x^2 - 2x - 3
     # x0=4
 
-    gxfn = f([1, 0])
-    gxdg = f([1])
+    gx = f([1, 0]) # g(x) = x
+    hx1 = f([2, 3], 1/2) # h(x) = (2x + 3)^(1/2)
+    hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
+    hx3 = c(f([1/2, 0]), f([1, 0, -3])) # h(x) = (x^2 - 3) / 2
 
-    hxfn1 = f([2, 3], 1/2)
-    hxdh1 = f([2, 3], -1/2)
-
-    hxfn2 = c(f([3, 0]), f([1, -2], -1)) # f(x) = (3 / (x - 2))
-    hxdh2 = c(f([-3, 0]), f([1, -2], -2)) # f(x) = (-3 / (x - 2)^2)
-
-    hxfn3 = c(f([1/2, 0]), f([1, -3])) # f(x) = (x^2 - 3) / 2
-    hxdh3 = f([1, 0])
-
-    root1 = n.basic(gxfn, hxfn1, gxdg, hxdh1, epsilon=0.005, x=4)
-    root2 = n.basic(gxfn, hxfn2, gxdg, hxdh2, epsilon=0.005, x=4)
-    root3 = n.basic(gxfn, hxfn3, gxdg, hxdh3, epsilon=0.005, x=4)
+    root1 = n.basic(gx, hx1, epsilon=0.005, x=4)
+    root2 = n.basic(gx, hx2, epsilon=0.005, x=4)
+    root3 = n.basic(gx, hx3, epsilon=0.005, x=4)
 
     print(root1, root2, root3) # 3.003, -1.003, None
 
+### Differentiation Methods
+#### Backward Method
+    # f  = x^2 - 2x - 3
+    # f' = 2x - 2
+
+    fnx = f([1, -2, -3])
+
+    n.diff_backward(fnx, 2) # 2
+    n.diff_backward(fnx, 5) # 8
+
 # Resources
 - YTU Numerical Analysis Lecture Notes
-- https://mat.iitm.ac.in/home/sryedida/public_html/caimna/content1.html
+- https://mat.iitm.ac.in/home/sryedida/public_html/caimna/index1.html
 
 # Testing Package
 ##### Test Directly as Script
@@ -68,8 +71,11 @@ My own experimental implementations of numerical methods as homework.
 ##### or Install Package Locally (from repo root dir)
     pip3.8 install .
 ##### and Test It from REPL
-    import numerica
-    numerica.utils.function.f([1, -6, 5])(5) == 0
+    import numerica as n
+    n.utils.function.f([1, -6, 5])(5) == 0
+##### or Use test.py
+    python3.8 -i test.py
+    n.diff_backward(f([1, -2, -3]), 2) == 2
 
 # Uploading to PyPI
 ##### Install Twine

@@ -1,12 +1,13 @@
 from ...utils.math import haveSameSign
+from ...differentiation.backward import backward as diff_backward
 
-def basic(fngx, fnhx, dgdx, dhdx, epsilon=0.1, x=0):
-  if (dgdx(x) <= dhdx(x)):
+def basic(gx, hx, epsilon=0.1, x=0):
+  if (diff_backward(gx, x) <= diff_backward(hx, x)):
     return None
 
   while True:
-    g = fngx(x)
-    h = fnhx(x)
+    g = gx(x)
+    h = hx(x)
 
     if abs(g - h) > epsilon:
       x = h
