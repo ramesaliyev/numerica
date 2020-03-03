@@ -9,7 +9,7 @@ def basic(gx, hx, epsilon=0.1, x=0):
     g = gx(x)
     h = hx(x)
 
-    if abs(g - h) > epsilon:
-      x = h
-    else:
+    if abs(g - h) <= epsilon:
       return x
+
+    x = h

@@ -13,11 +13,18 @@ def bisection(fn, epsilon=0.1, a=-10, b=10):
 
     fna = fn(a)
 
+    if (fnc == 0):
+      return c
+
+    if (fna == 0):
+      return a
+
+    if abs(prevC - c) <= epsilon:
+      return c
+
     if haveSameSign(fnc, fna):
       a = c
-    elif abs(prevC - c) > epsilon:
-      b = c
     else:
-      return c
+      b = c
 
     prevC = c
