@@ -12,6 +12,7 @@ My own experimental implementations of numerical methods as homework.
 
     fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
     fn2 = f([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
+    fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
 
 ## Solving Nonlinear Equations
 ### Root Bracketing Methods
@@ -50,6 +51,11 @@ My own experimental implementations of numerical methods as homework.
     root3 = n.basic(gx, hx3, epsilon=0.005, x=4)
 
     print(root1, root2, root3) # 3.003, -1.003, None
+
+#### Newton-Raphson
+    root1 = n.newtonraphson(fn3, epsilon=0.00005, x=-2.5)
+
+    print(root1) #
 
 ### Differentiation Methods
 #### Backward Method
