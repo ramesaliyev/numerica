@@ -3,20 +3,47 @@
 
 My own experimental implementations of numerical methods as homework.
 
-# Examples
-    python3.8 -i test.py #includes all definitions
+# Table of Contents
+ - Usage
+   - Importing
+   - Function Definition
+ - Examples
+   - 1- Solving Nonlinear Equations
+     - Root Bracketing Methods
+       - Graph Method
+       - Bisection Method
+       - Regula-Falsi Method
+     - Iterative Methods
+       - Basic Iteration (Jacobi)
+       - Newton-Raphson
+       - Secant
+   - 2- Solving Systems of Linear Equations
+   - 3- Solving Systems of Nonlinear Equations
+   - 4- Numerical Integration
+   - 5- Numerical Differentiation
+     - Backward Method
+   - 6- Finite Differences
+   - 7- Interpolation
+ - Resources
+ - Testing Package
+ - Uploading to PyPI
 
-## Preparation
+# Usage
+    python3.8 -i test.py #includes all definitions and tests
+
+## Importing
     import numerica as n
     from numerica import f, c
 
+## Function Definition
     fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
     fn2 = f([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
     fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
     fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
     fn5 = f([1, -2, -3]) # x^2 - 2x - 3
 
-## Solving Nonlinear Equations
+# Examples
+## 1- Solving Nonlinear Equations
 ### Root Bracketing Methods
 #### Graph Method
     root1 = n.graph(fn=fn1, dx=1, epsilon=0.001, x=0)
@@ -39,7 +66,7 @@ My own experimental implementations of numerical methods as homework.
     print(root1, root2, root3) # ~1.5, ~2, ~3
 
 ### Iterative Methods
-#### Basic Iteration
+#### Basic Iteration (Jacobi)
     # f = x^2 - 2x - 3
     # x0=4
 
@@ -64,13 +91,20 @@ My own experimental implementations of numerical methods as homework.
 
     print(root1) # ~4
 
-### Differentiation Methods
+## 2- Solving Systems of Linear Equations
+## 3- Solving Systems of Nonlinear Equations
+## 4- Numerical Integration
+
+## 5- Numerical Differentiation
 #### Backward Method
     # f  = x^2 - 2x - 3
     # f' = 2x - 2
 
     n.diff_backward(fn5, 2) # 2
     n.diff_backward(fn5, 5) # 8
+
+## 6- Finite Differences
+## 7- Interpolation
 
 # Resources
 - YTU Numerical Analysis Lecture Notes
@@ -84,9 +118,11 @@ My own experimental implementations of numerical methods as homework.
 ##### and Test It from REPL
     import numerica as n
     n.utils.function.f([1, -6, 5])(5) == 0
-##### or Use test.py
+##### or Use test.py Interactively
     python3.8 -i test.py
     n.diff_backward(f([1, -2, -3]), 2) == 2
+##### or Just Test and Exit
+    python3.8 test.py
 
 # Uploading to PyPI
 ##### Install Twine
