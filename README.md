@@ -4,36 +4,45 @@
 My own experimental implementations of numerical methods as homework.
 
 # Table of Contents
- - Usage
-   - Importing
-   - Function Definition
- - Examples
-   - 1- Solving Nonlinear Equations
-     - Root Bracketing Methods
-       - Graph Method
-       - Bisection Method
-       - Regula-Falsi Method
-     - Iterative Methods
-       - Basic Iteration (Jacobi)
-       - Newton-Raphson
-       - Secant
-   - 2- Solving Systems of Linear Equations
-   - 3- Solving Systems of Nonlinear Equations
-   - 4- Numerical Integration
-   - 5- Numerical Differentiation
-     - Backward Method
-   - 6- Finite Differences
-   - 7- Interpolation
- - Resources
- - Testing Package
- - Uploading to PyPI
+  - Usage
+    - Importing
+    - Function Definition
+    - Matrix Definition
+  - Examples
+    - 1- Solving Nonlinear Equations
+      - Root Bracketing Methods
+        - Graph Method
+        - Bisection Method
+        - Regula-Falsi Method
+      - Iterative Methods
+        - Basic Iteration (Jacobi)
+        - Newton-Raphson
+        - Secant
+    - 2- Matrix Operations
+      - Matrix Definition
+      - Creating an Identity Matrix by n
+      - Getting Dimensions of a Matrix
+      - Transpose of a Matrix
+      - Concat Matrices
+      - Concat Matrices in Vertical Axis
+    - 3- Solving Systems of Linear Equations
+    - 4- Solving Systems of Nonlinear Equations
+    - 5- Numerical Integration
+    - 6- Numerical Differentiation
+      - Backward Method
+    - 7- Finite Differences
+    - 8- Interpolation
+  - Resources
+  - Testing Package
+  - Uploading to PyPI
 
 # Usage
     python3.8 -i test.py #includes all definitions and tests
 
 ## Importing
     import numerica as n
-    from numerica import f, c
+    from numerica import f, c // function definition & composition
+    from numerica import m // matrix definition
 
 ## Function Definition
     fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
@@ -41,6 +50,9 @@ My own experimental implementations of numerical methods as homework.
     fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
     fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
     fn5 = f([1, -2, -3]) # x^2 - 2x - 3
+
+## Matrix Definition
+    m1 = m('1,2,3; 4,5,6; 7,8,9');
 
 # Examples
 ## 1- Solving Nonlinear Equations
@@ -91,11 +103,32 @@ My own experimental implementations of numerical methods as homework.
 
     print(root1) # ~4
 
-## 2- Solving Systems of Linear Equations
-## 3- Solving Systems of Nonlinear Equations
-## 4- Numerical Integration
+## 2- Matrix Operations
+#### Definition
+    m1 = m('1,2,3; 4,5,6; 7,8,9')
+    m2 = m('10,20,30; 40,50,60; 70,80,90')
 
-## 5- Numerical Differentiation
+#### Identity Matrix
+    mid1 = n.m_id(1) // [[1]]
+    mid2 = n.m_id(3) // [[1,0,0], [0,1,0], [0,0,1]]
+
+#### Size of Matrix
+    (m, n) = n.m_size(m1) // (3, 3)
+
+#### Transpose of a Matrix
+    n.m_transpose(m1) // transpose of m1
+
+#### Concat Matrices
+    n.m_concat(m1, m2) // '1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'
+
+#### Concat Matrices by Vertical Axis
+    n.m_concat_v(m1, m2) // '1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'
+
+## 3- Solving Systems of Linear Equations
+## 4- Solving Systems of Nonlinear Equations
+## 5- Numerical Integration
+
+## 6- Numerical Differentiation
 #### Backward Method
     # f  = x^2 - 2x - 3
     # f' = 2x - 2
@@ -103,8 +136,8 @@ My own experimental implementations of numerical methods as homework.
     n.diff_backward(fn5, 2) # 2
     n.diff_backward(fn5, 5) # 8
 
-## 6- Finite Differences
-## 7- Interpolation
+## 7- Finite Differences
+## 8- Interpolation
 
 # Resources
 - YTU Numerical Analysis Lecture Notes

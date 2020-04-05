@@ -1,0 +1,2 @@
+def gaussjordan(matrix):
+  pass

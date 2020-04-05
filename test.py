@@ -1,6 +1,7 @@
 import numerica as n
 
 from numerica import f, c
+from numerica import m
 from numerica import diff_backward
 
 fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
@@ -44,6 +45,26 @@ t(n.basic(gx, hx3, epsilon=0.005, x=4), None, 'nonlinear.iterative.basic.3')
 t(n.newtonraphson(fn3, epsilon=0.00005, x=-2.5), -2, 'nonlinear.iterative.newtonraphson.1')
 
 t(n.secant(fn4, epsilon=0.02, x0=3, x1=5), 4, 'nonlinear.iterative.secant.1')
+
+# Matrix Operations
+t(m('1'), [[1.0]], 'matrix.define.2')
+t(m('1,2,3'), [[1.0,2.0,3.0]], 'matrix.define.3')
+t(m('1,2,3; 4,5,6'), [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], 'matrix.define.4')
+t(m('1,2,3; 4,5,6; 7,8,9'), [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]], 'matrix.define.5')
+t(m([[1.0]]), [[1.0]], 'matrix.define.6')
+
+t(n.m_id(1), m('1'), 'matrix.operations.identity.1')
+t(n.m_id(3), m('1,0,0;0,1,0;0,0,1'), 'matrix.operations.identity.2')
+
+t(n.m_size([[1.0]]), (1,1), 'matrix.operations.size.1')
+t(n.m_size('1,2,3; 4,5,6; 7,8,9'), (3,3), 'matrix.operations.size.2')
+
+t(n.m_transpose(n.m_id(3)), n.m_id(3), 'matrix.operations.transpose.1')
+t(n.m_transpose('1,2,3; 4,5,6; 7,8,9'), m('1,4,7; 2,5,8; 3,6,9'), 'matrix.operations.transpose.2')
+t(n.m_transpose('1,2,3; 4,5,6'), m('1,4; 2,5; 3,6'), 'matrix.operations.transpose.3')
+
+t(n.m_concat('1,2,3; 4,5,6; 7,8,9', '10,20,30; 40,50,60; 70,80,90'), n.m('1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'), 'matrix.operations.concat.1')
+t(n.m_concat_v('1,2,3; 4,5,6; 7,8,9', '10,20,30; 40,50,60; 70,80,90'), n.m('1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'), 'matrix.operations.concat_v.1')
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.backward.1')
