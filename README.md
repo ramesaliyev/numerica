@@ -25,6 +25,8 @@ My own experimental implementations of numerical methods as homework.
       - Transpose of a Matrix
       - Concat Matrices
       - Concat Matrices in Vertical Axis
+      - Finding Inverse of a Matrix
+        - Gauss-Jordan Method
     - 3- Solving Systems of Linear Equations
     - 4- Solving Systems of Nonlinear Equations
     - 5- Numerical Integration
@@ -104,6 +106,7 @@ My own experimental implementations of numerical methods as homework.
     print(root1) # ~4
 
 ## 2- Matrix Operations
+### Basic Operations
 #### Definition
     m1 = m('1,2,3; 4,5,6; 7,8,9')
     m2 = m('10,20,30; 40,50,60; 70,80,90')
@@ -123,6 +126,11 @@ My own experimental implementations of numerical methods as homework.
 
 #### Concat Matrices by Vertical Axis
     n.m_concat_v(m1, m2) // '1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'
+
+### Finding Inverse of a Matrix
+#### Gauss-Jordan Method
+    m3 = m('5, 2, -4; 1, 4, 2; 2, 3, 6');
+    n.mi_gaussjordan(m3); // inverse of m3
 
 ## 3- Solving Systems of Linear Equations
 ## 4- Solving Systems of Nonlinear Equations
