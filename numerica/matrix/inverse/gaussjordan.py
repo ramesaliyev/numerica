@@ -10,6 +10,6 @@ def gaussjordan(A):
 
     for k in range(n):
       if (i == k): continue
-      rowmap(A, k+1, lambda cell, index: cell - (A[k][i] * A[i][index]))
+      rowmap(A, k+1, lambda cell, j: cell - (A[k][i] * A[i][j - 1]))
 
   return rowslice(A, n, 2 * n)

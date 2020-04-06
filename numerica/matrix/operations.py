@@ -38,7 +38,7 @@ def rowmap(A, i, fn):
   def call_fn(cell):
     (index, value) = list(cell)
     argc = len(getargspec(fn).args)
-    return fn(value, index) if argc == 2 else fn(value)
+    return fn(value, index + 1) if argc == 2 else fn(value)
 
   A[i] = list(map(call_fn, enumerate(A[i])))
 

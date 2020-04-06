@@ -72,10 +72,12 @@ t(n.m_colconcat('1,2,3; 4,5,6; 7,8,9', '10,20,30; 40,50,60; 70,80,90'), n.m('1,2
 t(n.m_rowslice('1,2,3; 4,5,6', 0, 1), m('1;4'), 'matrix.operations.rowslice.1')
 
 t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell: cell * 5), m('5,10,15; 4,5,6'), 'matrix.operations.rowmap.1')
-t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell, index: index * 7), m('0,7,14; 4,5,6'), 'matrix.operations.rowmap.2')
+t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell, j: j * 7), m('7,14,21; 4,5,6'), 'matrix.operations.rowmap.2')
 t(n.m_cellmap('1,2,3; 4,5,6', lambda cell: cell * 5), m('5,10,15; 20,25,30'), 'matrix.operations.cellmap.1')
 
 t(n.mi_gaussjordan('5, 2, -4; 1, 4, 2; 2, 3, 6'), m('0.17, -0.23, 0.19; -0.02, 0.36, -0.13; -0.05, -0.10, 0.17'), 'matrix.inverse.gaussjordan.1')
+
+
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.backward.1')
