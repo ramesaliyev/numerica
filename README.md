@@ -4,45 +4,45 @@
 My own experimental implementations of numerical methods as homework.
 
 # Table of Contents
-  - Usage
-    - Importing
-    - Function Definition
-    - Matrix Definition
-  - Examples
-    - 1- Solving Nonlinear Equations
-      - Root Bracketing Methods
-        - Graph Method
-        - Bisection Method
-        - Regula-Falsi Method
-      - Iterative Methods
-        - Basic Iteration (Jacobi)
-        - Newton-Raphson
-        - Secant
-    - 2- Matrix Operations
-      - Basic Operations
-        - Matrix Definition
-        - Creating an Identity Matrix by n
-        - Getting Dimensions of a Matrix
-        - Transpose of a Matrix
-      - Finding Inverse of a Matrix
-        - Gauss-Jordan Method
-      - Utils
-        - Concat Matrices by Row (Horizontal)
-        - Concat Matrices by Column (Vertical)
-        - Map a Row of Matrix
-        - Map all Matrix Cells
-        - Is Matrix Check
-        - Slice Matrix Vertically
-    - 3- Solving Systems of Linear Equations
-    - 4- Solving Systems of Nonlinear Equations
-    - 5- Numerical Integration
-    - 6- Numerical Differentiation
-      - Backward Method
-    - 7- Finite Differences
-    - 8- Interpolation
-  - Resources
-  - Testing Package
-  - Uploading to PyPI
+  - [Usage](#usage)
+    - [Importing](#importing)
+    - [Function Definition](#function-definition)
+    - [Matrix Definition](#matrix-definition)
+  - [Examples](#examples)
+    - [1- Solving Nonlinear Equations](#1--solving-nonlinear-equations)
+      - [Root Bracketing Methods](#root-bracketing-methods)
+        - [Graph Method](#graph-method)
+        - [Bisection Method](#bisection-method)
+        - [Regula-Falsi Method](#regula-falsi-method)
+      - [Iterative Methods](#iterative-methods)
+        - [Basic Iteration (Jacobi)](#basic-iteration-jacobi)
+        - [Newton-Raphson](#newton-raphson)
+        - [Secant](#secant)
+    - [2- Matrix Operations](#2--matrix-operations)
+      - [Basic Operations](#basic-operations)
+        - [Definition](#matrix-definition)
+        - [Creating an Identity Matrix by n](#identity-matrix)
+        - [Getting Dimensions of a Matrix](#size-of-matrix)
+        - [Transpose of a Matrix](#transpose-of-a-matrix)
+      - [Finding Inverse of a Matrix](#finding-inverse-of-a-matrix)
+        - [Gauss-Jordan Method](#gauss-jordan-method)
+      - [Matrix Utils](#matrix-utils)
+        - [Concat Matrices by Row (Horizontal)](#concat-matrices-by-row-horizontal)
+        - [Concat Matrices by Column (Vertical)](#concat-matrices-by-column-vertical)
+        - [Map a Row of Matrix](#map-a-row-of-matrix)
+        - [Map all Matrix Cells](#map-all-matrix-cells)
+        - [Is Matrix Check](#is-matrix-check)
+        - [Slice Matrix Vertically](#slice-matrix-vertically)
+    - [3- Solving Systems of Linear Equations](#3--solving-systems-of-linear-equations)
+    - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
+    - [5- Numerical Integration](#5--numerical-integration)
+    - [6- Numerical Differentiation](#6--numerical-differentiation)
+      - [Backward Method](#backward-method)
+    - [7- Finite Differences](#7--finite-differences)
+    - [8- Interpolation](#8--interpolation)
+  - [Resources](#resources)
+  - [Testing Package](#testing-package)
+  - [Uploading to PyPI](#uploading-to-pypi)
 
 # Usage
     python3.8 -i test.py #includes all definitions and tests
@@ -113,7 +113,7 @@ My own experimental implementations of numerical methods as homework.
 
 ## 2- Matrix Operations
 ### Basic Operations
-#### Definition
+#### Matrix Definition
     m1 = m('1,2,3; 4,5,6; 7,8,9')
     m2 = m('10,20,30; 40,50,60; 70,80,90')
 
@@ -132,7 +132,7 @@ My own experimental implementations of numerical methods as homework.
     m3 = m('5, 2, -4; 1, 4, 2; 2, 3, 6');
     n.mi_gaussjordan(m3); // inverse of m3
 
-### Utils
+### Matrix Utils
 #### Concat Matrices by Row (Horizontal)
     n.m_rowconcat(m1, m2) // '1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'
 
