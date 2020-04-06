@@ -20,4 +20,6 @@ from .matrix.operations import rowmap as m_rowmap
 from .matrix.operations import cellmap as m_cellmap
 from .matrix.inverse.gaussjordan import gaussjordan as mi_gaussjordan
 
+from .linear_systems.gauss import gauss as ls_gauss
+
 from .differentiation.backward import backward as diff_backward

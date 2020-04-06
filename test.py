@@ -77,7 +77,8 @@ t(n.m_cellmap('1,2,3; 4,5,6', lambda cell: cell * 5), m('5,10,15; 20,25,30'), 'm
 
 t(n.mi_gaussjordan('5, 2, -4; 1, 4, 2; 2, 3, 6'), m('0.17, -0.23, 0.19; -0.02, 0.36, -0.13; -0.05, -0.10, 0.17'), 'matrix.inverse.gaussjordan.1')
 
-
+# Systems of Linear Equations
+t(n.ls_gauss('3.6, 2.4, -1.8; 4.2, -5.8, 2.1; 0.8, 3.5, 6.5', '6.3; 7.5; 3.7'), m('1.81; 0.120; 0.281'), 'linearsystems.gauss.1')
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.backward.1')

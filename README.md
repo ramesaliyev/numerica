@@ -34,6 +34,7 @@ My own experimental implementations of numerical methods as homework.
         - [Is Matrix Check](#is-matrix-check)
         - [Slice Matrix Vertically](#slice-matrix-vertically)
     - [3- Solving Systems of Linear Equations](#3--solving-systems-of-linear-equations)
+      - [Gauss Elimination](#gauss-elimination)
     - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
     - [5- Numerical Integration](#5--numerical-integration)
     - [6- Numerical Differentiation](#6--numerical-differentiation)
@@ -152,6 +153,9 @@ My own experimental implementations of numerical methods as homework.
     n.m_rowslice('1,2,3; 4,5,6', 0, 1) // '1;4'
 
 ## 3- Solving Systems of Linear Equations
+### Gauss Elimination
+    n.ls_gauss()
+
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration
 
