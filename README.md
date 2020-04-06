@@ -66,22 +66,22 @@ My own experimental implementations of numerical methods as homework.
 ## 1- Solving Nonlinear Equations
 ### Root Bracketing Methods
 #### Graph Method
-    root1 = n.graph(fn=fn1, dx=1, epsilon=0.001, x=0)
-    root2 = n.graph(fn=fn1, dx=1, epsilon=0.001, x=2)
+    root1 = n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0)
+    root2 = n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=2)
 
     print(root1, root2) # 1, 5
 
 #### Bisection Method
-    root1 = n.bisection(fn=fn2, epsilon=0.001, a=0, b=1.75)
-    root2 = n.bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
-    root3 = n.bisection(fn=fn2, epsilon=0.001, a=2.5, b=6)
+    root1 = n.nl_bisection(fn=fn2, epsilon=0.001, a=0, b=1.75)
+    root2 = n.nl_bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
+    root3 = n.nl_bisection(fn=fn2, epsilon=0.001, a=2.5, b=6)
 
     print(root1, root2, root3) # ~1.5, ~2, ~3
 
 #### Regula-Falsi Method
-    root1 = n.regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75)
-    root2 = n.regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
-    root3 = n.regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6)
+    root1 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75)
+    root2 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
+    root3 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6)
 
     print(root1, root2, root3) # ~1.5, ~2, ~3
 
@@ -95,19 +95,19 @@ My own experimental implementations of numerical methods as homework.
     hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
     hx3 = c(f([1/2, 0]), f([1, 0, -3])) # h(x) = (x^2 - 3) / 2
 
-    root1 = n.basic(gx, hx1, epsilon=0.005, x=4)
-    root2 = n.basic(gx, hx2, epsilon=0.005, x=4)
-    root3 = n.basic(gx, hx3, epsilon=0.005, x=4)
+    root1 = n.nl_basic(gx, hx1, epsilon=0.005, x=4)
+    root2 = n.nl_basic(gx, hx2, epsilon=0.005, x=4)
+    root3 = n.nl_basic(gx, hx3, epsilon=0.005, x=4)
 
     print(root1, root2, root3) # ~3, ~-1, None
 
 #### Newton-Raphson
-    root1 = n.newtonraphson(fn3, epsilon=0.00005, x=-2.5)
+    root1 = n.nl_newtonraphson(fn3, epsilon=0.00005, x=-2.5)
 
     print(root1) # ~-2
 
 #### Secant
-    root1 = n.secant(fn4, epsilon=0.02, x0=3, x1=5)
+    root1 = n.nl_secant(fn4, epsilon=0.02, x0=3, x1=5)
 
     print(root1) # ~4
 

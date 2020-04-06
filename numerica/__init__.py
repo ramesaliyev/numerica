@@ -1,12 +1,12 @@
 from .utils import function
 from .utils.function import f, c
 
-from .nonlinear.bracketing.graph import graph
-from .nonlinear.bracketing.bisection import bisection
-from .nonlinear.bracketing.regulafalsi import regulafalsi
-from .nonlinear.iterative.basic import basic
-from .nonlinear.iterative.newtonraphson import newtonraphson
-from .nonlinear.iterative.secant import secant
+from .nonlinear.bracketing.graph import graph as nl_graph
+from .nonlinear.bracketing.bisection import bisection as nl_bisection
+from .nonlinear.bracketing.regulafalsi import regulafalsi as nl_regulafalsi
+from .nonlinear.iterative.basic import basic as nl_basic
+from .nonlinear.iterative.newtonraphson import newtonraphson as nl_newtonraphson
+from .nonlinear.iterative.secant import secant as nl_secant
 
 from .matrix.define import m
 from .matrix.define import is_matrix

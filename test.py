@@ -30,24 +30,24 @@ def t(a, b, name):
     print('[ok] '+name)
 
 # Nonlinear
-t(n.graph(fn=fn1, dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
-t(n.graph(fn=fn1, dx=1, epsilon=0.001, x=2), 5, 'nonlinear.bracketing.graph.2')
+t(n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
+t(n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=2), 5, 'nonlinear.bracketing.graph.2')
 
-t(n.bisection(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.bisection.1')
-t(n.bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.bisection.2')
-t(n.bisection(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.bisection.3')
+t(n.nl_bisection(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.bisection.1')
+t(n.nl_bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.bisection.2')
+t(n.nl_bisection(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.bisection.3')
 
-t(n.regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.regulafalsi.1')
-t(n.regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.regulafalsi.2')
-t(n.regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.regulafalsi.3')
+t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.regulafalsi.1')
+t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.regulafalsi.2')
+t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.regulafalsi.3')
 
-t(n.basic(gx, hx1, epsilon=0.005, x=4), 3, 'nonlinear.iterative.basic.1')
-t(n.basic(gx, hx2, epsilon=0.005, x=4), -1, 'nonlinear.iterative.basic.2')
-t(n.basic(gx, hx3, epsilon=0.005, x=4), None, 'nonlinear.iterative.basic.3')
+t(n.nl_basic(gx, hx1, epsilon=0.005, x=4), 3, 'nonlinear.iterative.basic.1')
+t(n.nl_basic(gx, hx2, epsilon=0.005, x=4), -1, 'nonlinear.iterative.basic.2')
+t(n.nl_basic(gx, hx3, epsilon=0.005, x=4), None, 'nonlinear.iterative.basic.3')
 
-t(n.newtonraphson(fn3, epsilon=0.00005, x=-2.5), -2, 'nonlinear.iterative.newtonraphson.1')
+t(n.nl_newtonraphson(fn3, epsilon=0.00005, x=-2.5), -2, 'nonlinear.iterative.newtonraphson.1')
 
-t(n.secant(fn4, epsilon=0.02, x0=3, x1=5), 4, 'nonlinear.iterative.secant.1')
+t(n.nl_secant(fn4, epsilon=0.02, x0=3, x1=5), 4, 'nonlinear.iterative.secant.1')
 
 # Matrix Operations
 t(m('1'), [[1.0]], 'matrix.define.2')
