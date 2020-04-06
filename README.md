@@ -19,14 +19,20 @@ My own experimental implementations of numerical methods as homework.
         - Newton-Raphson
         - Secant
     - 2- Matrix Operations
-      - Matrix Definition
-      - Creating an Identity Matrix by n
-      - Getting Dimensions of a Matrix
-      - Transpose of a Matrix
-      - Concat Matrices
-      - Concat Matrices in Vertical Axis
+      - Basic Operations
+        - Matrix Definition
+        - Creating an Identity Matrix by n
+        - Getting Dimensions of a Matrix
+        - Transpose of a Matrix
       - Finding Inverse of a Matrix
         - Gauss-Jordan Method
+      - Utils
+        - Concat Matrices by Row (Horizontal)
+        - Concat Matrices by Column (Vertical)
+        - Map a Row of Matrix
+        - Map all Matrix Cells
+        - Is Matrix Check
+        - Slice Matrix Vertically
     - 3- Solving Systems of Linear Equations
     - 4- Solving Systems of Nonlinear Equations
     - 5- Numerical Integration
@@ -121,16 +127,29 @@ My own experimental implementations of numerical methods as homework.
 #### Transpose of a Matrix
     n.m_transpose(m1) // transpose of m1
 
-#### Concat Matrices
-    n.m_concat(m1, m2) // '1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'
-
-#### Concat Matrices by Vertical Axis
-    n.m_concat_v(m1, m2) // '1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'
-
 ### Finding Inverse of a Matrix
 #### Gauss-Jordan Method
     m3 = m('5, 2, -4; 1, 4, 2; 2, 3, 6');
     n.mi_gaussjordan(m3); // inverse of m3
+
+### Utils
+#### Concat Matrices by Row (Horizontal)
+    n.m_rowconcat(m1, m2) // '1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'
+
+#### Concat Matrices by Column (Vertical)
+    n.m_colconcat(m1, m2) // '1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'
+
+#### Map a Row of Matrix
+    n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell: cell * 5) // '5,10,15; 4,5,6'
+
+#### Map all Matrix Cells
+    n.m_cellmap('1,2,3; 4,5,6', lambda cell: cell * 5) // '5,10,15; 20,25,30'
+
+#### Is Matrix Check
+    n.is_matrix([[1]]) // True
+
+#### Slice Matrix Vertically
+    n.m_rowslice('1,2,3; 4,5,6', 0, 1) // '1;4'
 
 ## 3- Solving Systems of Linear Equations
 ## 4- Solving Systems of Nonlinear Equations
