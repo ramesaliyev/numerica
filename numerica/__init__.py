@@ -25,4 +25,4 @@ from .linear_systems.gauss import gauss as ls_gauss
 from .linear_systems.jacobi import jacobi as ls_jacobi
 from .linear_systems.gaussseidel import gaussseidel as ls_gaussseidel
 
-from .differentiation.backward import backward as diff_backward
+from .differentiation.euler.backward import backward as diff_backward

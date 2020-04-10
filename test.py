@@ -93,7 +93,7 @@ t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001
 t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
 
 # Differentiation
-t(n.diff_backward(fn5, 2), 2, 'differentiation.backward.1')
-t(n.diff_backward(fn5, 5), 8, 'differentiation.backward.2')
+t(n.diff_backward(fn5, 2), 2, 'differentiation.euler.backward.1')
+t(n.diff_backward(fn5, 5), 8, 'differentiation.euler.backward.2')
 
 finish()

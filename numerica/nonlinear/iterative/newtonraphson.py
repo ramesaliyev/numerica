@@ -1,4 +1,4 @@
-from ...differentiation.backward import backward as diff_backward
+from ...differentiation.euler.backward import backward as diff_backward
 
 def newtonraphson(fx, epsilon=0.1, x=0):
   while True:

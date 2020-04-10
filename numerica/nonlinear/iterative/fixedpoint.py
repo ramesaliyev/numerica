@@ -1,5 +1,5 @@
 from ...utils.math import haveSameSign
-from ...differentiation.backward import backward as diff_backward
+from ...differentiation.euler.backward import backward as diff_backward
 
 def fixedpoint(gx, hx, epsilon=0.1, x=0):
   if (diff_backward(gx, x) <= diff_backward(hx, x)):
