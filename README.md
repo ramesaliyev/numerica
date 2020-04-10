@@ -1,7 +1,7 @@
 # Numerica
 [![PyPI version](https://badge.fury.io/py/numerica.svg)](https://badge.fury.io/py/numerica)
 
-My own experimental implementations of numerical methods as homework. _python >= 3.8 is required_
+My own experimental implementations of numerical methods as homework.
 
 # Table of Contents
   - [Usage](#usage)
@@ -48,7 +48,7 @@ My own experimental implementations of numerical methods as homework. _python >=
   - [Uploading to PyPI](#uploading-to-pypi)
 
 # Usage
-    python3.8 -i test.py #includes all definitions and tests
+**python >= 3.8 is required**
 
 ## Importing
     import numerica as n
