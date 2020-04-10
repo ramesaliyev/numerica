@@ -10,7 +10,7 @@ fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
 fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
 fn5 = f([1, -2, -3]) # x^2 - 2x - 3
 
-# nonlinear.iterative.basic
+# nonlinear.iterative.fixedpoint
 gx = f([1, 0]) # g(x) = x
 hx1 = f([2, 3], 1/2) # h(x) = (2x + 3)^(1/2)
 hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
@@ -50,9 +50,9 @@ t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketi
 t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.regulafalsi.2')
 t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.regulafalsi.3')
 
-t(n.nl_basic(gx, hx1, epsilon=0.005, x=4), 3, 'nonlinear.iterative.basic.1')
-t(n.nl_basic(gx, hx2, epsilon=0.005, x=4), -1, 'nonlinear.iterative.basic.2')
-t(n.nl_basic(gx, hx3, epsilon=0.005, x=4), None, 'nonlinear.iterative.basic.3')
+t(n.nl_fixedpoint(gx, hx1, epsilon=0.005, x=4), 3, 'nonlinear.iterative.fixedpoint.1')
+t(n.nl_fixedpoint(gx, hx2, epsilon=0.005, x=4), -1, 'nonlinear.iterative.fixedpoint.2')
+t(n.nl_fixedpoint(gx, hx3, epsilon=0.005, x=4), None, 'nonlinear.iterative.fixedpoint.3')
 
 t(n.nl_newtonraphson(fn3, epsilon=0.00005, x=-2.5), -2, 'nonlinear.iterative.newtonraphson.1')
 
@@ -88,7 +88,7 @@ t(n.mi_gaussjordan('5,2,-4; 1,4,2; 2,3,6'), m('0.17,-0.23,0.19; -0.02,0.36,-0.13
 
 # Systems of Linear Equations
 t(n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7'), m('1.81; 0.120; 0.281'), 'linearsystems.gauss.1')
-t(n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.basic.1')
+t(n.ls_jacobi('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.jacobi.1')
 t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.gaussseidel.1')
 t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
 

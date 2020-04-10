@@ -4,7 +4,7 @@ from ..matrix.define import parse_matrix
 from ..matrix.operations import size, copy, rowconcat
 
 @parse_matrix(3)
-def basic(A, C, X, epsilon=0.01, max_iteration=1000000):
+def jacobi(A, C, X, epsilon=0.01, max_iteration=1000000):
   (_, n) = size(A)
 
   orders = permutation(list(range(n)))

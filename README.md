@@ -1,7 +1,7 @@
 # Numerica
 [![PyPI version](https://badge.fury.io/py/numerica.svg)](https://badge.fury.io/py/numerica)
 
-My own experimental implementations of numerical methods as homework.
+My own experimental implementations of numerical methods as homework. _python >= 3.8 is required_
 
 # Table of Contents
   - [Usage](#usage)
@@ -15,7 +15,7 @@ My own experimental implementations of numerical methods as homework.
         - [Bisection](#bisection)
         - [Regula-Falsi](#regula-falsi)
       - [Iterative Methods](#iterative-methods)
-        - [Basic Iteration (Jacobi)](#basic-iteration-jacobi)
+        - [Fixed-Point Iteration](#fixed-point-iteration)
         - [Newton-Raphson](#newton-raphson)
         - [Secant](#secant)
     - [2- Matrix Operations](#2--matrix-operations)
@@ -35,7 +35,7 @@ My own experimental implementations of numerical methods as homework.
         - [Slice Matrix Vertically](#slice-matrix-vertically)
     - [3- Solving Systems of Linear Equations](#3--solving-systems-of-linear-equations)
       - [Gauss Elimination](#gauss-elimination)
-      - [Basic Iteration (Jacobi)](#basic-iteration-jacobi-1)
+      - [Jacobi](#jacobi)
       - [Gauss-Seidel](#gauss-seidel)
     - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
     - [5- Numerical Integration](#5--numerical-integration)
@@ -89,7 +89,7 @@ My own experimental implementations of numerical methods as homework.
     print(root1, root2, root3) # ~1.5, ~2, ~3
 
 ### Iterative Methods
-#### Basic Iteration (Jacobi)
+#### Fixed-Point Iteration
     # f = x^2 - 2x - 3
     # x0=4
 
@@ -98,9 +98,9 @@ My own experimental implementations of numerical methods as homework.
     hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
     hx3 = c(f([1/2, 0]), f([1, 0, -3])) # h(x) = (x^2 - 3) / 2
 
-    root1 = n.nl_basic(gx, hx1, epsilon=0.005, x=4)
-    root2 = n.nl_basic(gx, hx2, epsilon=0.005, x=4)
-    root3 = n.nl_basic(gx, hx3, epsilon=0.005, x=4)
+    root1 = n.nl_fixedpoint(gx, hx1, epsilon=0.005, x=4)
+    root2 = n.nl_fixedpoint(gx, hx2, epsilon=0.005, x=4)
+    root3 = n.nl_fixedpoint(gx, hx3, epsilon=0.005, x=4)
 
     print(root1, root2, root3) # ~3, ~-1, None
 
@@ -158,8 +158,8 @@ My own experimental implementations of numerical methods as homework.
 ### Gauss Elimination
     n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7') // '1.81; 0.120; 0.281'
 
-### Basic Iteration (Jacobi)
-    n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
+### Jacobi
+    n.ls_jacobi('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
 
 ### Gauss-Seidel
     n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'

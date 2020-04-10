@@ -5,7 +5,7 @@ from .utils.math import permutation
 from .nonlinear.bracketing.graph import graph as nl_graph
 from .nonlinear.bracketing.bisection import bisection as nl_bisection
 from .nonlinear.bracketing.regulafalsi import regulafalsi as nl_regulafalsi
-from .nonlinear.iterative.basic import basic as nl_basic
+from .nonlinear.iterative.fixedpoint import fixedpoint as nl_fixedpoint
 from .nonlinear.iterative.newtonraphson import newtonraphson as nl_newtonraphson
 from .nonlinear.iterative.secant import secant as nl_secant
 
@@ -22,7 +22,7 @@ from .matrix.operations import cellmap as m_cellmap
 from .matrix.inverse.gaussjordan import gaussjordan as mi_gaussjordan
 
 from .linear_systems.gauss import gauss as ls_gauss
-from .linear_systems.basic import basic as ls_basic
+from .linear_systems.jacobi import jacobi as ls_jacobi
 from .linear_systems.gaussseidel import gaussseidel as ls_gaussseidel
 
 from .differentiation.backward import backward as diff_backward
