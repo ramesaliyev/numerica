@@ -23,5 +23,6 @@ from .matrix.inverse.gaussjordan import gaussjordan as mi_gaussjordan
 
 from .linear_systems.gauss import gauss as ls_gauss
 from .linear_systems.basic import basic as ls_basic
+from .linear_systems.gaussseidel import gaussseidel as ls_gaussseidel
 
 from .differentiation.backward import backward as diff_backward

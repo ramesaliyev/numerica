@@ -88,8 +88,9 @@ t(n.mi_gaussjordan('5,2,-4; 1,4,2; 2,3,6'), m('0.17,-0.23,0.19; -0.02,0.36,-0.13
 
 # Systems of Linear Equations
 t(n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7'), m('1.81; 0.120; 0.281'), 'linearsystems.gauss.1')
-
 t(n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.basic.1')
+t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.gaussseidel.1')
+t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.backward.1')

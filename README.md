@@ -36,7 +36,7 @@ My own experimental implementations of numerical methods as homework.
     - [3- Solving Systems of Linear Equations](#3--solving-systems-of-linear-equations)
       - [Gauss Elimination](#gauss-elimination)
       - [Basic Iteration (Jacobi)](#basic-iteration-jacobi-1)
-      - [Gauss-Seidel]
+      - [Gauss-Seidel](#gauss-seidel)
     - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
     - [5- Numerical Integration](#5--numerical-integration)
     - [6- Numerical Differentiation](#6--numerical-differentiation)
@@ -162,6 +162,7 @@ My own experimental implementations of numerical methods as homework.
     n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
 
 ### Gauss-Seidel
+    n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
 
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration
