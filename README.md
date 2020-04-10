@@ -35,6 +35,7 @@ My own experimental implementations of numerical methods as homework.
         - [Slice Matrix Vertically](#slice-matrix-vertically)
     - [3- Solving Systems of Linear Equations](#3--solving-systems-of-linear-equations)
       - [Gauss Elimination](#gauss-elimination)
+      - [Basic Iteration (Jacobi)](#basic-iteration-jacobi-1)
     - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
     - [5- Numerical Integration](#5--numerical-integration)
     - [6- Numerical Differentiation](#6--numerical-differentiation)
@@ -154,7 +155,10 @@ My own experimental implementations of numerical methods as homework.
 
 ## 3- Solving Systems of Linear Equations
 ### Gauss Elimination
-    n.ls_gauss()
+    n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7') // '1.81; 0.120; 0.281'
+
+### Basic Iteration (Jacobi)
+    n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
 
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration

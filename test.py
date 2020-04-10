@@ -17,6 +17,8 @@ hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
 hx3 = c(f([1/2, 0]), f([1, 0, -3])) # h(x) = (x^2 - 3) / 2
 
 # Tests
+oks = []
+errors = []
 def t(a, b, name):
   if (type(a) == int or type(a) == float): a = round(a, 1)
   if (type(b) == int or type(b) == float): b = round(b, 1)
@@ -25,9 +27,16 @@ def t(a, b, name):
   if (n.is_matrix(b)): b = n.m_cellmap(b, lambda cell: round(cell, 2))
 
   if (a != b):
-    print('[error] ' + name + ' expected: (' + str(b) + ') got: (' + str(a) + ')')
+    errors.append('[error] ' + name + ' expected: (' + str(b) + ') got: (' + str(a) + ')')
   else:
-    print('[ok] '+name)
+    oks.append('[ok] ' + name)
+
+def finish():
+  for log in (errors if len(errors > 0) else oks): print(log)
+
+# Utils
+t(list(n.permutation([1,2])), [[1,2], [2,1]], 'utils.math.permutation.1')
+t(list(n.permutation([1,2,3])), [[1,2,3], [2,1,3], [2,3,1], [1,3,2], [3,1,2], [3,2,1]], 'utils.math.permutation.2')
 
 # Nonlinear
 t(n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
@@ -75,11 +84,15 @@ t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell: cell * 5), m('5,10,15; 4,5,6'), 'ma
 t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell, j: j * 7), m('7,14,21; 4,5,6'), 'matrix.operations.rowmap.2')
 t(n.m_cellmap('1,2,3; 4,5,6', lambda cell: cell * 5), m('5,10,15; 20,25,30'), 'matrix.operations.cellmap.1')
 
-t(n.mi_gaussjordan('5, 2, -4; 1, 4, 2; 2, 3, 6'), m('0.17, -0.23, 0.19; -0.02, 0.36, -0.13; -0.05, -0.10, 0.17'), 'matrix.inverse.gaussjordan.1')
+t(n.mi_gaussjordan('5,2,-4; 1,4,2; 2,3,6'), m('0.17,-0.23,0.19; -0.02,0.36,-0.13; -0.05,-0.10,0.17'), 'matrix.inverse.gaussjordan.1')
 
 # Systems of Linear Equations
-t(n.ls_gauss('3.6, 2.4, -1.8; 4.2, -5.8, 2.1; 0.8, 3.5, 6.5', '6.3; 7.5; 3.7'), m('1.81; 0.120; 0.281'), 'linearsystems.gauss.1')
+t(n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7'), m('1.81; 0.120; 0.281'), 'linearsystems.gauss.1')
+
+t(n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.basic.1')
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.backward.1')
 t(n.diff_backward(fn5, 5), 8, 'differentiation.backward.2')
+
+finish()

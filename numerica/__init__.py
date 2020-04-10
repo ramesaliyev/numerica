@@ -1,5 +1,6 @@
 from .utils import function
 from .utils.function import f, c
+from .utils.math import permutation
 
 from .nonlinear.bracketing.graph import graph as nl_graph
 from .nonlinear.bracketing.bisection import bisection as nl_bisection
@@ -21,5 +22,6 @@ from .matrix.operations import cellmap as m_cellmap
 from .matrix.inverse.gaussjordan import gaussjordan as mi_gaussjordan
 
 from .linear_systems.gauss import gauss as ls_gauss
+from .linear_systems.basic import basic as ls_basic
 
 from .differentiation.backward import backward as diff_backward
