@@ -11,9 +11,9 @@ My own experimental implementations of numerical methods as homework.
   - [Examples](#examples)
     - [1- Solving Nonlinear Equations](#1--solving-nonlinear-equations)
       - [Root Bracketing Methods](#root-bracketing-methods)
-        - [Graph Method](#graph-method)
-        - [Bisection Method](#bisection-method)
-        - [Regula-Falsi Method](#regula-falsi-method)
+        - [Graph](#graph)
+        - [Bisection](#bisection)
+        - [Regula-Falsi](#regula-falsi)
       - [Iterative Methods](#iterative-methods)
         - [Basic Iteration (Jacobi)](#basic-iteration-jacobi)
         - [Newton-Raphson](#newton-raphson)
@@ -36,6 +36,7 @@ My own experimental implementations of numerical methods as homework.
     - [3- Solving Systems of Linear Equations](#3--solving-systems-of-linear-equations)
       - [Gauss Elimination](#gauss-elimination)
       - [Basic Iteration (Jacobi)](#basic-iteration-jacobi-1)
+      - [Gauss-Seidel]
     - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
     - [5- Numerical Integration](#5--numerical-integration)
     - [6- Numerical Differentiation](#6--numerical-differentiation)
@@ -67,20 +68,20 @@ My own experimental implementations of numerical methods as homework.
 # Examples
 ## 1- Solving Nonlinear Equations
 ### Root Bracketing Methods
-#### Graph Method
+#### Graph
     root1 = n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0)
     root2 = n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=2)
 
     print(root1, root2) # 1, 5
 
-#### Bisection Method
+#### Bisection
     root1 = n.nl_bisection(fn=fn2, epsilon=0.001, a=0, b=1.75)
     root2 = n.nl_bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
     root3 = n.nl_bisection(fn=fn2, epsilon=0.001, a=2.5, b=6)
 
     print(root1, root2, root3) # ~1.5, ~2, ~3
 
-#### Regula-Falsi Method
+#### Regula-Falsi
     root1 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75)
     root2 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
     root3 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6)
@@ -159,6 +160,8 @@ My own experimental implementations of numerical methods as homework.
 
 ### Basic Iteration (Jacobi)
     n.ls_basic('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
+
+### Gauss-Seidel
 
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration

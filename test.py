@@ -32,7 +32,7 @@ def t(a, b, name):
     oks.append('[ok] ' + name)
 
 def finish():
-  for log in (errors if len(errors > 0) else oks): print(log)
+  for log in (errors if len(errors) > 0 else oks): print(log)
 
 # Utils
 t(list(n.permutation([1,2])), [[1,2], [2,1]], 'utils.math.permutation.1')
