@@ -26,3 +26,5 @@ from .linear_systems.jacobi import jacobi as ls_jacobi
 from .linear_systems.gaussseidel import gaussseidel as ls_gaussseidel
 
 from .differentiation.euler.backward import backward as diff_backward
+from .differentiation.euler.forward import forward as diff_forward
+from .differentiation.euler.midpoint import midpoint as diff_midpoint

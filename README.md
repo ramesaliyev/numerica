@@ -41,9 +41,9 @@ My own experimental implementations of numerical methods as homework.
     - [5- Numerical Integration](#5--numerical-integration)
     - [6- Numerical Differentiation](#6--numerical-differentiation)
       - [Euler Methods](#euler-methods)
-        - [Backward Method](#backward-method)
-        - [Forward Method](#forward-method)
-        - [Midpoint Method](#midpoint-method)
+        - [Backward](#backward)
+        - [Forward](#forward)
+        - [Midpoint](#midpoint)
     - [7- Finite Differences](#7--finite-differences)
     - [8- Interpolation](#8--interpolation)
   - [Resources](#resources)
@@ -180,7 +180,18 @@ My own experimental implementations of numerical methods as homework.
     n.diff_backward(fn5, 5) # 8
 
 #### Forward
+    # f  = x^2 - 2x - 3
+    # f' = 2x - 2
+
+    n.diff_forward(fn5, 2) # 2
+    n.diff_forward(fn5, 5) # 8
+
 #### Midpoint
+    # f  = x^2 - 2x - 3
+    # f' = 2x - 2
+
+    n.diff_midpoint(fn5, 2) # 2
+    n.diff_midpoint(fn5, 5) # 8
 
 ## 7- Finite Differences
 ## 8- Interpolation

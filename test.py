@@ -95,5 +95,9 @@ t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09)
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.euler.backward.1')
 t(n.diff_backward(fn5, 5), 8, 'differentiation.euler.backward.2')
+t(n.diff_forward(fn5, 2), 2, 'differentiation.euler.forward.1')
+t(n.diff_forward(fn5, 5), 8, 'differentiation.euler.forward.2')
+t(n.diff_midpoint(fn5, 2), 2, 'differentiation.euler.midpoint.1')
+t(n.diff_midpoint(fn5, 5), 8, 'differentiation.euler.midpoint.2')
 
 finish()
