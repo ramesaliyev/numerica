@@ -9,6 +9,9 @@ fn2 = f([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
 fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
 fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
 fn5 = f([1, -2, -3]) # x^2 - 2x - 3
+fn6 = c(f([1, 0]), f([1, 0, 1], -1)) # f = 1 / (1 + x^2)
+fn7 = f([1, 0, 0, 0]) # x^3
+fn8 = f([1, 2, -1, -2]) # x^3 + 2x^2 - x - 2
 
 # nonlinear.iterative.fixedpoint
 gx = f([1, 0]) # g(x) = x
@@ -91,6 +94,14 @@ t(n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7'), m('1.8
 t(n.ls_jacobi('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.jacobi.1')
 t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001), m('3; -2; -1'), 'linearsystems.gaussseidel.1')
 t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
+
+# Integration
+
+t(n.int_trapezoidal(fn6, 0, 1, 4), 0.78, 'integration.trapezoidal.1')
+t(n.int_trapezoidal(fn8, -2, -1, 4), 0.39, 'integration.trapezoidal.2')
+t(n.int_simpson(fn7, 0, 2, 4), 4, 'integration.simpson.1')
+t(n.int_simpson(fn7, -1, 0, 4), -0.25, 'integration.simpson.2')
+t(n.int_simpson(fn8, -2, -1, 4), 0.41, 'integration.simpson.3')
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.euler.backward.1')

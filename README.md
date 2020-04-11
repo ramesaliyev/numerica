@@ -39,6 +39,8 @@ My own experimental implementations of numerical methods as homework.
       - [Gauss-Seidel](#gauss-seidel)
     - [4- Solving Systems of Nonlinear Equations](#4--solving-systems-of-nonlinear-equations)
     - [5- Numerical Integration](#5--numerical-integration)
+      - [Trapezoidal](#trapezoidal)
+      - [Simpson](#simpson)
     - [6- Numerical Differentiation](#6--numerical-differentiation)
       - [Euler Methods](#euler-methods)
         - [Backward](#backward)
@@ -64,6 +66,9 @@ My own experimental implementations of numerical methods as homework.
     fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
     fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
     fn5 = f([1, -2, -3]) # x^2 - 2x - 3
+    fn6 = c(f([1, 0]), f([1, 0, 1], -1)) # f = 1 / (1 + x^2)
+    fn7 = f([1, 0, 0, 0]) # x^3
+    fn8 = f([1, 2, -1, -2]) # x^3 + 2x^2 - x - 2
 
 ## Matrix Definition
     m1 = m('1,2,3; 4,5,6; 7,8,9');
@@ -169,6 +174,11 @@ My own experimental implementations of numerical methods as homework.
 
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration
+### Trapezoidal
+    n.int_trapezoidal(fn6, 0, 1, 4) // 0.78
+
+### Simpson
+    n.int_simpson(fn8, -2, -1, 4) // 0.41
 
 ## 6- Numerical Differentiation
 ### Euler Methods
