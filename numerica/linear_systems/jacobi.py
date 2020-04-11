@@ -30,7 +30,12 @@ def jacobi(A, C, X, epsilon=0.01, max_iteration=1000000):
     iteration -= 1
 
     for i in range(n):
-      sum_of_rest = sum([A[i][j] * prevX[j][0] for j in range(n) if j != i])
+      sum_of_rest = sum([
+        A[i][j] * prevX[j][0]
+        for j in range(n)
+        if j != i
+      ])
+
       X[i][0] = (C[i][0] - sum_of_rest) / A[i][i]
 
     if all([abs(X[j][0] - prevX[j][0]) <= epsilon for j in range(n)]):

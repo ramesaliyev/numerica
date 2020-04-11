@@ -22,7 +22,11 @@ def gauss(A, C):
   X = [[0] for p in range(n)]
   for i in range(n-1, -1, -1):
     xi = (1 / A[i][i])
-    xi *= (C[i][0] - sum([A[i][j] * X[j][0] for j in range(i+1, n)]))
+
+    xi *= (C[i][0] - sum([
+      A[i][j] * X[j][0]
+      for j in range(i+1, n)
+    ]))
 
     X[i][0] = xi
 
