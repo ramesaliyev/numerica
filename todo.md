@@ -10,6 +10,11 @@
   - taylor series method (for degree of 1 and 2)
 - integration
   - support n degree
+- finite differences
+  - understand and implement finite differences methods
+- interpolation
+  -
+- regression
 ### other
 - support string as function with n variables
 - change all examples to use keyword arguments

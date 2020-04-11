@@ -46,8 +46,8 @@ My own experimental implementations of numerical methods as homework.
         - [Backward](#backward)
         - [Forward](#forward)
         - [Midpoint](#midpoint)
-    - [7- Finite Differences](#7--finite-differences)
-    - [8- Interpolation](#8--interpolation)
+    - [7- Interpolation](#7--interpolation)
+      - [Lagrange](#lagrange)
   - [Resources](#resources)
   - [Testing Package](#testing-package)
   - [Uploading to PyPI](#uploading-to-pypi)
@@ -175,10 +175,10 @@ My own experimental implementations of numerical methods as homework.
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration
 ### Trapezoidal
-    n.int_trapezoidal(fn6, 0, 1, 4) // 0.78
+    n.itg_trapezoidal(fn6, 0, 1, 4) // 0.78
 
 ### Simpson
-    n.int_simpson(fn8, -2, -1, 4) // 0.41
+    n.itg_simpson(fn8, -2, -1, 4) // 0.41
 
 ## 6- Numerical Differentiation
 ### Euler Methods
@@ -203,8 +203,9 @@ My own experimental implementations of numerical methods as homework.
     n.diff_midpoint(fn5, 2) # 2
     n.diff_midpoint(fn5, 5) # 8
 
-## 7- Finite Differences
-## 8- Interpolation
+## 7- Interpolation
+### Lagrange
+    n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2, 2) // 11
 
 # Resources
 - YTU Numerical Analysis Lecture Notes

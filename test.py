@@ -96,12 +96,11 @@ t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001
 t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
 
 # Integration
-
-t(n.int_trapezoidal(fn6, 0, 1, 4), 0.78, 'integration.trapezoidal.1')
-t(n.int_trapezoidal(fn8, -2, -1, 4), 0.39, 'integration.trapezoidal.2')
-t(n.int_simpson(fn7, 0, 2, 4), 4, 'integration.simpson.1')
-t(n.int_simpson(fn7, -1, 0, 4), -0.25, 'integration.simpson.2')
-t(n.int_simpson(fn8, -2, -1, 4), 0.41, 'integration.simpson.3')
+t(n.itg_trapezoidal(fn6, 0, 1, 4), 0.78, 'integration.trapezoidal.1')
+t(n.itg_trapezoidal(fn8, -2, -1, 4), 0.39, 'integration.trapezoidal.2')
+t(n.itg_simpson(fn7, 0, 2, 4), 4, 'integration.simpson.1')
+t(n.itg_simpson(fn7, -1, 0, 4), -0.25, 'integration.simpson.2')
+t(n.itg_simpson(fn8, -2, -1, 4), 0.41, 'integration.simpson.3')
 
 # Differentiation
 t(n.diff_backward(fn5, 2), 2, 'differentiation.euler.backward.1')
@@ -111,4 +110,9 @@ t(n.diff_forward(fn5, 5), 8, 'differentiation.euler.forward.2')
 t(n.diff_midpoint(fn5, 2), 2, 'differentiation.euler.midpoint.1')
 t(n.diff_midpoint(fn5, 5), 8, 'differentiation.euler.midpoint.2')
 
+# Interpolation
+t(n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2, 1), 1, 'interpolation.lagrange.1')
+t(n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2, 2), 11, 'interpolation.lagrange.2')
+
+# finiish
 finish()
