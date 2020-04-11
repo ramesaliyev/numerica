@@ -13,7 +13,8 @@
 - finite differences
   - understand and implement finite differences methods
 - interpolation
-  -
+  - linear interpolation
+  - gregory newton interpolation
 - regression
 ### other
 - support string as function with n variables
