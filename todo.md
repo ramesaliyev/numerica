@@ -10,8 +10,6 @@
   - taylor series method (for degree of 1 and 2)
 - integration
   - support n degree
-- finite differences
-  - understand and implement finite differences methods
 - interpolation
   - linear interpolation
   - gregory newton interpolation

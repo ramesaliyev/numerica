@@ -46,7 +46,9 @@ My own experimental implementations of numerical methods as homework.
         - [Backward](#backward)
         - [Forward](#forward)
         - [Midpoint](#midpoint)
-    - [7- Interpolation](#7--interpolation)
+    - [7- Finite Differences](#7--finite-differences)
+        - [Determine  Degree of a Polynomial](#determine-degree-of-a-polynomial)
+    - [8- Interpolation](#8--interpolation)
       - [Lagrange](#lagrange)
   - [Resources](#resources)
   - [Testing Package](#testing-package)
@@ -203,9 +205,13 @@ My own experimental implementations of numerical methods as homework.
     n.diff_midpoint(fn5, 2) # 2
     n.diff_midpoint(fn5, 5) # 8
 
-## 7- Interpolation
+## 7- Finite Differences
+### Determine Degree of a Polynomial
+    n.fd_degree([(0,8),(1,22),(2,134),(3,560),(4,1660)]) // 4
+
+## 8- Interpolation
 ### Lagrange
-    n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2, 2) // 11
+    n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2) // 11
 
 # Resources
 - YTU Numerical Analysis Lecture Notes

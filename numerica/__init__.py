@@ -32,4 +32,6 @@ from .differentiation.euler.midpoint import midpoint as diff_midpoint
 from .integration.trapezoidal import trapezoidal as itg_trapezoidal
 from .integration.simpson import simpson as itg_simpson
 
+from .finite_differences.degree import degree as fd_degree
+
 from .interpolation.lagrange import lagrange as itp_lagrange
