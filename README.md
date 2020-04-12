@@ -8,7 +8,9 @@ My own experimental implementations of numerical methods as homework.
     - [Importing](#importing)
     - [Function Definition](#function-definition)
     - [Matrix Definition](#matrix-definition)
-  - [Examples](#examples)
+  - [Documentation](#documentation)
+    For examples check `test.py` file.
+
     - [1- Solving Nonlinear Equations](#1--solving-nonlinear-equations)
       - [Root Bracketing Methods](#root-bracketing-methods)
         - [Graph](#graph)
@@ -75,7 +77,7 @@ My own experimental implementations of numerical methods as homework.
 ## Matrix Definition
     m1 = m('1,2,3; 4,5,6; 7,8,9');
 
-# Examples
+# Documentation
 ## 1- Solving Nonlinear Equations
 ### Root Bracketing Methods
 #### Graph
