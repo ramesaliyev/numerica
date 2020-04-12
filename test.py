@@ -2,7 +2,6 @@ import numerica as n
 
 from numerica import f, c
 from numerica import m
-from numerica import diff_backward
 
 fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
 fn2 = f([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
@@ -40,6 +39,11 @@ def finish():
 # Utils
 t(list(n.permutation([1,2])), [[1,2], [2,1]], 'utils.math.permutation.1')
 t(list(n.permutation([1,2,3])), [[1,2,3], [2,1,3], [2,3,1], [1,3,2], [3,1,2], [3,2,1]], 'utils.math.permutation.2')
+
+t(n.polynomial([3], 5), 3, 'utils.math.polynomial.1')
+t(n.polynomial([1, 0], 5), 5, 'utils.math.polynomial.2')
+t(n.polynomial([1, 3], 5), 8, 'utils.math.polynomial.3')
+t(n.polynomial([2, 1, 3], 5), 58, 'utils.math.polynomial.4')
 
 # Nonlinear
 t(n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
@@ -121,6 +125,12 @@ t(n.itp_lagrange([(0,-5),(1,1),(3,25)], 1), 1, 'interpolation.lagrange.1')
 t(n.itp_lagrange([(0,-5),(1,1),(3,25)], 2), 11, 'interpolation.lagrange.2')
 t(n.itp_lagrange([(0,8),(1,22),(2,134),(3,560),(4,1660)], 2.5), 288.625, 'interpolation.lagrange.3')
 t(n.itp_lagrange([(0,8),(1,13),(2,40),(3,107),(4,232),(5,433)], 3.25), 132.1, 'interpolation.lagrange.4')
+
+# Regression
+t(n.reg_leastsquares([(0,1),(2,5.1),(4,9),(6,13),(8,17),(10,21)], 6, 1), 8.2, 'regression.leastsquares.1')
+t(n.reg_leastsquares([(0,0),(2,8),(3,10),(4,14),(5,17),(7,22),(8,26),(9,29),(10,32),(12,35)], 6, 1), 11.9, 'regression.leastsquares.2')
+t(n.reg_leastsquares([(2,1),(3,6),(5,22),(6,33),(8,61)], 6, 2), -107, 'regression.leastsquares.3')
+t(n.reg_leastsquares([(0,8),(1,22),(2,134),(3,560),(4,1660),(5,3938),(6,8042),(7,14764)], 17), 675110, 'regression.leastsquares.4')
 
 # finish
 finish()

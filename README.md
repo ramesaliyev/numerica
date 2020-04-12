@@ -51,6 +51,8 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
         - [Determine  Degree of a Polynomial](#determine-degree-of-a-polynomial)
     - [8- Interpolation](#8--interpolation)
       - [Lagrange](#lagrange)
+    - [9- Regression](#9--regression)
+      - [Least Squares](#least-squares)
   - [Resources](#resources)
   - [Testing Package](#testing-package)
   - [Uploading to PyPI](#uploading-to-pypi)
@@ -213,6 +215,10 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
 ## 8- Interpolation
 ### Lagrange
     n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2) // 11
+
+## 9- Regression
+### Least Squares
+    n.reg_leastsquares([(2,1),(3,6),(5,22),(6,33),(8,61)], 6, 2) // -107
 
 # Resources
 - YTU Numerical Analysis Lecture Notes

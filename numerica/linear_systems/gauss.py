@@ -20,6 +20,7 @@ def gauss(A, C):
   A = rowslice(A, 0, n)
 
   X = [[0] for p in range(n)]
+
   for i in range(n-1, -1, -1):
     xi = (1 / A[i][i])
 

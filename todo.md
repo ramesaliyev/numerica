@@ -13,8 +13,7 @@
 - interpolation
   - linear interpolation
   - gregory newton interpolation
-- regression
 ### other
 - support string as function with n variables
-- change all examples to use keyword arguments
-- change all examples to has documentation
+- change all examples to use no-keyword arguments in test.py
+- add method variable names to documentation

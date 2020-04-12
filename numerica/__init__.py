@@ -1,6 +1,6 @@
 from .utils import function
 from .utils.function import f, c
-from .utils.math import permutation
+from .utils.math import permutation, polynomial
 
 from .nonlinear.bracketing.graph import graph as nl_graph
 from .nonlinear.bracketing.bisection import bisection as nl_bisection
@@ -35,3 +35,5 @@ from .integration.simpson import simpson as itg_simpson
 from .finite_differences.degree import degree as fd_degree
 
 from .interpolation.lagrange import lagrange as itp_lagrange
+
+from .regression.leastsquares import leastsquares as reg_leastsquares
