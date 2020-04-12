@@ -114,11 +114,13 @@ t(n.diff_midpoint(fn5, 5), 8, 'differentiation.euler.midpoint.2')
 t(n.fd_degree([(0,0),(1,1),(2,2),(3,3)]), 1, 'finitedifferences.degree.1')
 t(n.fd_degree([(-3,-18),(-2,-2),(-1,2),(0,0),(1,-2),(2,2)]), 3, 'finitedifferences.degree.2')
 t(n.fd_degree([(0,8),(1,22),(2,134),(3,560),(4,1660)]), 4, 'finitedifferences.degree.3')
+t(n.fd_degree([(0,8),(1,13),(2,40),(3,107),(4,232),(5,433)]), 3, 'finitedifferences.degree.4')
 
 # Interpolation
 t(n.itp_lagrange([(0,-5),(1,1),(3,25)], 1), 1, 'interpolation.lagrange.1')
 t(n.itp_lagrange([(0,-5),(1,1),(3,25)], 2), 11, 'interpolation.lagrange.2')
 t(n.itp_lagrange([(0,8),(1,22),(2,134),(3,560),(4,1660)], 2.5), 288.625, 'interpolation.lagrange.3')
+t(n.itp_lagrange([(0,8),(1,13),(2,40),(3,107),(4,232),(5,433)], 3.25), 132.1, 'interpolation.lagrange.4')
 
 # finish
 finish()
