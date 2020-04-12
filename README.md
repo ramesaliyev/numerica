@@ -1,7 +1,8 @@
 # Numerica
 [![PyPI version](https://badge.fury.io/py/numerica.svg)](https://badge.fury.io/py/numerica)
 
-My own experimental implementations of numerical methods as homework.
+My own experimental implementations of numerical methods as homework.<br />
+Use [documentation](#documentation) to see how to use, and check [test.py](./test.py) for real examples.
 
 # Table of Contents
   - [Usage](#usage)
@@ -9,8 +10,6 @@ My own experimental implementations of numerical methods as homework.
     - [Function Definition](#function-definition)
     - [Matrix Definition](#matrix-definition)
   - [Documentation](#documentation)
-    For examples check `test.py` file.
-
     - [1- Solving Nonlinear Equations](#1--solving-nonlinear-equations)
       - [Root Bracketing Methods](#root-bracketing-methods)
         - [Graph](#graph)
