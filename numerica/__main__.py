@@ -1,6 +1,6 @@
-from .utils.function import f
+from .utils.function import fn
 
 print('Welcome to Numerica!')
 
 # Test
-print(f(2, [5, -6, 1], 1)(5) == 0)
+# ...

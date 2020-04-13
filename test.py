@@ -1,22 +1,7 @@
 import numerica as n
 
-from numerica import f, c, fn
+from numerica import fn
 from numerica import m
-
-fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
-fn2 = f([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
-fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
-fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
-fn5 = f([1, -2, -3]) # x^2 - 2x - 3
-fn6 = c(f([1, 0]), f([1, 0, 1], -1)) # f = 1 / (1 + x^2)
-fn7 = f([1, 0, 0, 0]) # x^3
-fn8 = f([1, 2, -1, -2]) # x^3 + 2x^2 - x - 2
-
-# nonlinear.iterative.fixedpoint
-gx = f([1, 0]) # g(x) = x
-hx1 = f([2, 3], 1/2) # h(x) = (2x + 3)^(1/2)
-hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
-hx3 = c(f([1/2, 0]), f([1, 0, -3])) # h(x) = (x^2 - 3) / 2
 
 # Tests
 oks = []
@@ -48,6 +33,9 @@ t(fn('2x^2 + 3x + 5')(x=1), 10, 'utils.function.fn.8')
 t(fn('x + y')(3, y=3), 6, 'utils.function.fn.9')
 t(fn('2x^2 + 3x + 3y^2 + 5y')(x=2, y=3), 56, 'utils.function.fn.10')
 t(fn('y + 20')(y=5), 25, 'utils.function.fn.11')
+t(fn('(x)')(x=5), 5, 'utils.function.fn.12')
+t(fn('(x + 5) * (x + 2)')(x=3), 40, 'utils.function.fn.13')
+t(fn('x^3 - 4x^2 - 4x + 15')(x=-3), -36, 'utils.function.fn.14')
 
 t(list(n.permutation([1,2])), [[1,2], [2,1]], 'utils.math.permutation.1')
 t(list(n.permutation([1,2,3])), [[1,2,3], [2,1,3], [2,3,1], [1,3,2], [3,1,2], [3,2,1]], 'utils.math.permutation.2')
@@ -58,24 +46,24 @@ t(n.polynomial([1, 3], 5), 8, 'utils.math.polynomial.3')
 t(n.polynomial([2, 1, 3], 5), 58, 'utils.math.polynomial.4')
 
 # Nonlinear
-t(n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
-t(n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=2), 5, 'nonlinear.bracketing.graph.2')
+t(n.nl_graph(fn=fn('x^2 - 6x + 5'), dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
+t(n.nl_graph(fn=fn('x^2 - 6x + 5'), dx=1, epsilon=0.001, x=2), 5, 'nonlinear.bracketing.graph.2')
 
-t(n.nl_bisection(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.bisection.1')
-t(n.nl_bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.bisection.2')
-t(n.nl_bisection(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.bisection.3')
+t(n.nl_bisection(fn=fn('x^3 - 6.5x^2 + 13.5x - 9'), epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.bisection.1')
+t(n.nl_bisection(fn=fn('x^3 - 6.5x^2 + 13.5x - 9'), epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.bisection.2')
+t(n.nl_bisection(fn=fn('x^3 - 6.5x^2 + 13.5x - 9'), epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.bisection.3')
 
-t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.regulafalsi.1')
-t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.regulafalsi.2')
-t(n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.regulafalsi.3')
+t(n.nl_regulafalsi(fn=fn('x^3 - 6.5x^2 + 13.5x - 9'), epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.regulafalsi.1')
+t(n.nl_regulafalsi(fn=fn('x^3 - 6.5x^2 + 13.5x - 9'), epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.regulafalsi.2')
+t(n.nl_regulafalsi(fn=fn('x^3 - 6.5x^2 + 13.5x - 9'), epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.regulafalsi.3')
 
-t(n.nl_fixedpoint(gx, hx1, epsilon=0.005, x=4), 3, 'nonlinear.iterative.fixedpoint.1')
-t(n.nl_fixedpoint(gx, hx2, epsilon=0.005, x=4), -1, 'nonlinear.iterative.fixedpoint.2')
-t(n.nl_fixedpoint(gx, hx3, epsilon=0.005, x=4), None, 'nonlinear.iterative.fixedpoint.3')
+t(n.nl_fixedpoint(fn('x'), fn('(2x + 3)^(1/2)'), epsilon=0.005, x=4), 3, 'nonlinear.iterative.fixedpoint.1')
+t(n.nl_fixedpoint(fn('x'), fn('(3 / (x - 2))'), epsilon=0.005, x=4), -1, 'nonlinear.iterative.fixedpoint.2')
+t(n.nl_fixedpoint(fn('x'), fn('(x^2 - 3) / 2'), epsilon=0.005, x=4), None, 'nonlinear.iterative.fixedpoint.3')
 
-t(n.nl_newtonraphson(fn3, epsilon=0.00005, x=-2.5), -2, 'nonlinear.iterative.newtonraphson.1')
+t(n.nl_newtonraphson(fn('x^3 - 4x^2 - 4x + 15'), epsilon=0.00005, x=-2.5), -2, 'nonlinear.iterative.newtonraphson.1')
 
-t(n.nl_secant(fn4, epsilon=0.02, x0=3, x1=5), 4, 'nonlinear.iterative.secant.1')
+t(n.nl_secant(fn('x^3 - 20x + 16'), epsilon=0.02, x0=3, x1=5), 4, 'nonlinear.iterative.secant.1')
 
 # Matrix Operations
 t(m('1'), [[1.0]], 'matrix.define.2')
@@ -112,19 +100,19 @@ t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001
 t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
 
 # Integration
-t(n.itg_trapezoidal(fn6, 0, 1, 4), 0.78, 'integration.trapezoidal.1')
-t(n.itg_trapezoidal(fn8, -2, -1, 4), 0.39, 'integration.trapezoidal.2')
-t(n.itg_simpson(fn7, 0, 2, 4), 4, 'integration.simpson.1')
-t(n.itg_simpson(fn7, -1, 0, 4), -0.25, 'integration.simpson.2')
-t(n.itg_simpson(fn8, -2, -1, 4), 0.41, 'integration.simpson.3')
+t(n.itg_trapezoidal(fn('1 / (1 + x^2)'), 0, 1, 4), 0.78, 'integration.trapezoidal.1')
+t(n.itg_trapezoidal(fn('x^3 + 2x^2 - x - 2'), -2, -1, 4), 0.39, 'integration.trapezoidal.2')
+t(n.itg_simpson(fn('x^3'), 0, 2, 4), 4, 'integration.simpson.1')
+t(n.itg_simpson(fn('x^3'), -1, 0, 4), -0.25, 'integration.simpson.2')
+t(n.itg_simpson(fn('x^3 + 2x^2 - x - 2'), -2, -1, 4), 0.41, 'integration.simpson.3')
 
 # Differentiation
-t(n.diff_backward(fn5, 2), 2, 'differentiation.euler.backward.1')
-t(n.diff_backward(fn5, 5), 8, 'differentiation.euler.backward.2')
-t(n.diff_forward(fn5, 2), 2, 'differentiation.euler.forward.1')
-t(n.diff_forward(fn5, 5), 8, 'differentiation.euler.forward.2')
-t(n.diff_midpoint(fn5, 2), 2, 'differentiation.euler.midpoint.1')
-t(n.diff_midpoint(fn5, 5), 8, 'differentiation.euler.midpoint.2')
+t(n.diff_backward(fn('x^2 - 2x - 3'), 2), 2, 'differentiation.euler.backward.1')
+t(n.diff_backward(fn('x^2 - 2x - 3'), 5), 8, 'differentiation.euler.backward.2')
+t(n.diff_forward(fn('x^2 - 2x - 3'), 2), 2, 'differentiation.euler.forward.1')
+t(n.diff_forward(fn('x^2 - 2x - 3'), 5), 8, 'differentiation.euler.forward.2')
+t(n.diff_midpoint(fn('x^2 - 2x - 3'), 2), 2, 'differentiation.euler.midpoint.1')
+t(n.diff_midpoint(fn('x^2 - 2x - 3'), 5), 8, 'differentiation.euler.midpoint.2')
 
 # Finite differences
 t(n.fd_degree([(0,0),(1,1),(2,2),(3,3)]), 1, 'finitedifferences.degree.1')

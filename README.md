@@ -62,163 +62,130 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
 
 ## Importing
     import numerica as n
-    from numerica import f, c // function definition & composition
+    from numerica import fn // function definition
     from numerica import m // matrix definition
 
 ## Function Definition
-    fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
-    fn2 = f([1, -6.5, 13.5, -9]) # (1x^3 - 6.5x^2 + 13.5x - 9)^1
-    fn3 = f([1, -4, -4, 15]) # f = x^3 - 4x^2 - 4x + 15
-    fn4 = f([1, 0, -20, 16]) # x^3 - 20x + 16
-    fn5 = f([1, -2, -3]) # x^2 - 2x - 3
-    fn6 = c(f([1, 0]), f([1, 0, 1], -1)) # f = 1 / (1 + x^2)
-    fn7 = f([1, 0, 0, 0]) # x^3
-    fn8 = f([1, 2, -1, -2]) # x^3 + 2x^2 - x - 2
+    fn('expression')
+
+    fnx = fn('3x^2 + 2x + 3')
+    fnx(2)
 
 ## Matrix Definition
-    m1 = m('1,2,3; 4,5,6; 7,8,9');
+    m(
+        a11, a12, a13;
+        a21, a22, a23;
+        a31, a32, a33
+    )
+
+    matrix = m('1,2,3; 4,5,6; 7,8,9');
 
 # Documentation
 ## 1- Solving Nonlinear Equations
 ### Root Bracketing Methods
 #### Graph
-    root1 = n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=0)
-    root2 = n.nl_graph(fn=fn1, dx=1, epsilon=0.001, x=2)
-
-    print(root1, root2) # 1, 5
+    n.nl_graph(fn, dx, epsilon, x)
 
 #### Bisection
-    root1 = n.nl_bisection(fn=fn2, epsilon=0.001, a=0, b=1.75)
-    root2 = n.nl_bisection(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
-    root3 = n.nl_bisection(fn=fn2, epsilon=0.001, a=2.5, b=6)
-
-    print(root1, root2, root3) # ~1.5, ~2, ~3
+    n.nl_bisection(fn, epsilon, a, b)
 
 #### Regula-Falsi
-    root1 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=0, b=1.75)
-    root2 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=1.75, b=2.5)
-    root3 = n.nl_regulafalsi(fn=fn2, epsilon=0.001, a=2.5, b=6)
-
-    print(root1, root2, root3) # ~1.5, ~2, ~3
+    n.nl_regulafalsi(fn, epsilon, a, b)
 
 ### Iterative Methods
 #### Fixed-Point Iteration
-    # f = x^2 - 2x - 3
-    # x0=4
-
-    gx = f([1, 0]) # g(x) = x
-    hx1 = f([2, 3], 1/2) # h(x) = (2x + 3)^(1/2)
-    hx2 = c(f([3, 0]), f([1, -2], -1)) # h(x) = (3 / (x - 2))
-    hx3 = c(f([1/2, 0]), f([1, 0, -3])) # h(x) = (x^2 - 3) / 2
-
-    root1 = n.nl_fixedpoint(gx, hx1, epsilon=0.005, x=4)
-    root2 = n.nl_fixedpoint(gx, hx2, epsilon=0.005, x=4)
-    root3 = n.nl_fixedpoint(gx, hx3, epsilon=0.005, x=4)
-
-    print(root1, root2, root3) # ~3, ~-1, None
+    n.nl_fixedpoint(gx, hx, epsilon, x)
 
 #### Newton-Raphson
-    root1 = n.nl_newtonraphson(fn3, epsilon=0.00005, x=-2.5)
-
-    print(root1) # ~-2
+    n.nl_newtonraphson(fn, epsilon, x)
 
 #### Secant
-    root1 = n.nl_secant(fn4, epsilon=0.02, x0=3, x1=5)
-
-    print(root1) # ~4
+    n.nl_secant(fn, epsilon, x0, x1)
 
 ## 2- Matrix Operations
 ### Basic Operations
 #### Matrix Definition
-    m1 = m('1,2,3; 4,5,6; 7,8,9')
-    m2 = m('10,20,30; 40,50,60; 70,80,90')
+    m(
+        a11, a12, a13;
+        a21, a22, a23;
+        a31, a32, a33
+    )
 
 #### Identity Matrix
-    mid1 = n.m_id(1) // [[1]]
-    mid2 = n.m_id(3) // [[1,0,0], [0,1,0], [0,0,1]]
+    n.m_id(n)
 
 #### Size of Matrix
-    (m, n) = n.m_size(m1) // (3, 3)
+    (m, n) = n.m_size(A)
 
 #### Transpose of a Matrix
-    n.m_transpose(m1) // transpose of m1
+    n.m_transpose(A)
 
 ### Finding Inverse of a Matrix
 #### Gauss-Jordan Method
-    m3 = m('5, 2, -4; 1, 4, 2; 2, 3, 6');
-    n.mi_gaussjordan(m3); // inverse of m3
+    n.mi_gaussjordan(A)
 
 ### Matrix Utils
 #### Concat Matrices by Row (Horizontal)
-    n.m_rowconcat(m1, m2) // '1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'
+    n.m_rowconcat(A, B)
 
 #### Concat Matrices by Column (Vertical)
-    n.m_colconcat(m1, m2) // '1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'
+    n.m_colconcat(A, B)
 
 #### Map a Row of Matrix
-    n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell: cell * 5) // '5,10,15; 4,5,6'
+    n.m_rowmap(A, i, iteratee)
 
 #### Map all Matrix Cells
-    n.m_cellmap('1,2,3; 4,5,6', lambda cell: cell * 5) // '5,10,15; 20,25,30'
+    n.m_cellmap(A, iteratee)
 
 #### Is Matrix Check
-    n.is_matrix([[1]]) // True
+    n.is_matrix(A)
 
 #### Slice Matrix Vertically
-    n.m_rowslice('1,2,3; 4,5,6', 0, 1) // '1;4'
+    n.m_rowslice(A, start, stop, step)
 
 ## 3- Solving Systems of Linear Equations
 ### Gauss Elimination
-    n.ls_gauss('3.6,2.4,-1.8; 4.2,-5.8,2.1; 0.8,3.5,6.5', '6.3; 7.5; 3.7') // '1.81; 0.120; 0.281'
+    n.ls_gauss(A, C)
 
 ### Jacobi
-    n.ls_jacobi('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
+    n.ls_jacobi(A, C, X, epsilon=0.001)
 
 ### Gauss-Seidel
-    n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001) // '3; -2; -1'
+    n.ls_gaussseidel(A, C, X, epsilon=0.001)
 
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration
 ### Trapezoidal
-    n.itg_trapezoidal(fn6, 0, 1, 4) // 0.78
+    n.itg_trapezoidal(fn, x0, xn, n)
 
 ### Simpson
-    n.itg_simpson(fn8, -2, -1, 4) // 0.41
+    n.itg_simpson(fn, x0, xn, n)
 
 ## 6- Numerical Differentiation
 ### Euler Methods
 #### Backward
-    # f  = x^2 - 2x - 3
-    # f' = 2x - 2
-
-    n.diff_backward(fn5, 2) # 2
-    n.diff_backward(fn5, 5) # 8
+    n.diff_backward(fn, x)
 
 #### Forward
-    # f  = x^2 - 2x - 3
-    # f' = 2x - 2
-
-    n.diff_forward(fn5, 2) # 2
-    n.diff_forward(fn5, 5) # 8
+    n.diff_forward(fn, x)
 
 #### Midpoint
-    # f  = x^2 - 2x - 3
-    # f' = 2x - 2
-
-    n.diff_midpoint(fn5, 2) # 2
-    n.diff_midpoint(fn5, 5) # 8
+    n.diff_midpoint(fn, x)
 
 ## 7- Finite Differences
 ### Determine Degree of a Polynomial
-    n.fd_degree([(0,8),(1,22),(2,134),(3,560),(4,1660)]) // 4
+    n.fd_degree(pair_tuples)
+    n.fd_degree([(x0,y0), (x1,y1), (x2,y3), ...])
 
 ## 8- Interpolation
 ### Lagrange
-    n.itp_lagrange([(0, -5), (1, 1), (3, 25)], 2) // 11
+    n.itp_lagrange(pair_tuples)
+    n.itp_lagrange([(x0,y0), (x1,y1), (x2,y3), ...], x)
 
 ## 9- Regression
 ### Least Squares
-    n.reg_leastsquares([(2,1),(3,6),(5,22),(6,33),(8,61)], 6, 2) // -107
+    n.reg_leastsquares(pair_tuples)
+    n.reg_leastsquares([(x0,y0), (x1,y1), (x2,y3), ...], x, deg)
 
 # Resources
 - YTU Numerical Analysis Lecture Notes
@@ -231,10 +198,10 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
     pip3.8 install .
 ##### and Test It from REPL
     import numerica as n
-    n.utils.function.f([1, -6, 5])(5) == 0
+    # ...
 ##### or Use test.py Interactively
     python3.8 -i test.py
-    n.diff_backward(f([1, -2, -3]), 2) == 2
+    # ...
 ##### or Just Test and Exit
     python3.8 test.py
 
