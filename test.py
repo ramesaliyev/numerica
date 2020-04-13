@@ -1,6 +1,6 @@
 import numerica as n
 
-from numerica import f, c
+from numerica import f, c, fn
 from numerica import m
 
 fn1 = f([1, -6, 5]) # (x^2 - 6x + 5)^1
@@ -37,6 +37,18 @@ def finish():
   for log in (errors if len(errors) > 0 else oks): print(log)
 
 # Utils
+t(fn('5')(0), 5, 'utils.function.fn.1')
+t(fn('x')(3), 3, 'utils.function.fn.2')
+t(fn('4x')(7), 28, 'utils.function.fn.3')
+t(fn('x + 7')(4), 11, 'utils.function.fn.4')
+t(fn('2x + 3')(4), 11, 'utils.function.fn.5')
+t(fn('3x^2 + x + 7')(4), 59, 'utils.function.fn.6')
+t(fn('3x^2 + 2x + 3')(2), 19, 'utils.function.fn.7')
+t(fn('2x^2 + 3x + 5')(x=1), 10, 'utils.function.fn.8')
+t(fn('x + y')(3, y=3), 6, 'utils.function.fn.9')
+t(fn('2x^2 + 3x + 3y^2 + 5y')(x=2, y=3), 56, 'utils.function.fn.10')
+t(fn('y + 20')(y=5), 25, 'utils.function.fn.11')
+
 t(list(n.permutation([1,2])), [[1,2], [2,1]], 'utils.math.permutation.1')
 t(list(n.permutation([1,2,3])), [[1,2,3], [2,1,3], [2,3,1], [1,3,2], [3,1,2], [3,2,1]], 'utils.math.permutation.2')
 

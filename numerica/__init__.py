@@ -1,5 +1,5 @@
 from .utils import function
-from .utils.function import f, c
+from .utils.function import f, c, fn
 from .utils.math import permutation, polynomial
 
 from .nonlinear.bracketing.graph import graph as nl_graph
