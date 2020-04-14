@@ -7,7 +7,7 @@ with open('README.md', 'r') as fh:
 
 setup(
   name='numerica',
-  version='0.2.1',
+  version='0.3.0',
   description='Numerical Analysis methods with Python (experimental)',
   long_description=long_description,
   long_description_content_type='text/markdown',
