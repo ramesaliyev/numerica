@@ -2,7 +2,7 @@
 [![PyPI version](https://badge.fury.io/py/numerica.svg)](https://badge.fury.io/py/numerica)
 
 My own experimental implementations of numerical methods as homework.<br />
-Use [documentation](#documentation) to see how to use, and check [test.py](./test.py) for real examples.
+Use [documentation](https://github.com/ramesaliyev/numerica#documentation) to see how to use, and check [test.py](https://github.com/ramesaliyev/numerica/blob/master/test.py) for real examples.
 
 # Table of Contents
   - [Usage](#usage)
