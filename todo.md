@@ -5,7 +5,7 @@
   - cholesky method
 - solving systems of nonlinear equations
   - taylor series method (for 2 and 3 variables atleast) (for n variables if possible)
-- differentation
+- differentiation
   - euler methods for n degree
   - taylor series method (for degree of 1 and 2)
 - integration

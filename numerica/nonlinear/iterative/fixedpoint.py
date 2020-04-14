@@ -1,8 +1,12 @@
+from ...utils.function import parse_f, f
 from ...utils.math import haveSameSign
-from ...differentiation.euler.backward import backward as diff_backward
+from ...differentiation.euler.midpoint import midpoint as diff_midpoint
 
-def fixedpoint(gx, hx, epsilon=0.1, x=0):
-  if (diff_backward(gx, x) <= diff_backward(hx, x)):
+@parse_f()
+def fixedpoint(hx, epsilon=0.1, x=0):
+  gx = f('x')
+
+  if (diff_midpoint(gx, x) <= diff_midpoint(hx, x)):
     return None
 
   while True:

@@ -1,12 +1,14 @@
+from ...utils.function import parse_f
 from ...utils.math import haveSameSign
 
-def graph(fn, dx=1, epsilon=0.1, x=0):
+@parse_f()
+def graph(fx, dx=1, epsilon=0.1, x=0):
   prevX = x
-  prevY = fn(x)
+  prevY = fx(x)
 
   while True:
     x += dx
-    y = fn(x)
+    y = fx(x)
 
     if (y == 0):
       return x

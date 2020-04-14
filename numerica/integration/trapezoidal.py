@@ -1,8 +1,11 @@
-def trapezoidal(fn, x0, xn, n):
+from ..utils.function import parse_f
+
+@parse_f()
+def trapezoidal(fx, x0, xn, n):
   h = (xn - x0) / n
 
   return h * (
-    ((fn(x0) + fn(xn)) / 2) + (
-      sum([fn(x0 + (i*h)) for i in range(1, n)])
+    ((fx(x0) + fx(xn)) / 2) + (
+      sum([fx(x0 + (i*h)) for i in range(1, n)])
     )
   )

@@ -1,4 +1,4 @@
-from .utils.function import fn
+from .utils.function import f
 
 print('Welcome to Numerica!')
 

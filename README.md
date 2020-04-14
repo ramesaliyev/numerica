@@ -62,14 +62,14 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
 
 ## Importing
     import numerica as n
-    from numerica import fn // function definition
+    from numerica import f // function definition
     from numerica import m // matrix definition
 
 ## Function Definition
-    fn('expression')
+    f('expression')
 
-    fnx = fn('3x^2 + 2x + 3')
-    fnx(2)
+    fx = f('3x^2 + 2x + 3')
+    fx(2)
 
 ## Matrix Definition
     m(
@@ -84,23 +84,23 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
 ## 1- Solving Nonlinear Equations
 ### Root Bracketing Methods
 #### Graph
-    n.nl_graph(fn, dx, epsilon, x)
+    n.nl_graph(fx, dx, epsilon, x)
 
 #### Bisection
-    n.nl_bisection(fn, epsilon, a, b)
+    n.nl_bisection(fx, epsilon, a, b)
 
 #### Regula-Falsi
-    n.nl_regulafalsi(fn, epsilon, a, b)
+    n.nl_regulafalsi(fx, epsilon, a, b)
 
 ### Iterative Methods
 #### Fixed-Point Iteration
-    n.nl_fixedpoint(gx, hx, epsilon, x)
+    n.nl_fixedpoint(hx, epsilon, x)
 
 #### Newton-Raphson
-    n.nl_newtonraphson(fn, epsilon, x)
+    n.nl_newtonraphson(fx, epsilon, x)
 
 #### Secant
-    n.nl_secant(fn, epsilon, x0, x1)
+    n.nl_secant(fx, epsilon, x0, x1)
 
 ## 2- Matrix Operations
 ### Basic Operations
@@ -156,21 +156,21 @@ Use [documentation](#documentation) to see how to use, and check [test.py](./tes
 ## 4- Solving Systems of Nonlinear Equations
 ## 5- Numerical Integration
 ### Trapezoidal
-    n.itg_trapezoidal(fn, x0, xn, n)
+    n.itg_trapezoidal(fx, x0, xn, n)
 
 ### Simpson
-    n.itg_simpson(fn, x0, xn, n)
+    n.itg_simpson(fx, x0, xn, n)
 
 ## 6- Numerical Differentiation
 ### Euler Methods
 #### Backward
-    n.diff_backward(fn, x)
+    n.diff_backward(fx, x)
 
 #### Forward
-    n.diff_forward(fn, x)
+    n.diff_forward(fx, x)
 
 #### Midpoint
-    n.diff_midpoint(fn, x)
+    n.diff_midpoint(fx, x)
 
 ## 7- Finite Differences
 ### Determine Degree of a Polynomial
