@@ -126,11 +126,12 @@ t(n.itp_lagrange([(0,-5),(1,1),(3,25)], 2), 11, 'interpolation.lagrange.2')
 t(n.itp_lagrange([(0,8),(1,22),(2,134),(3,560),(4,1660)], 2.5), 288.625, 'interpolation.lagrange.3')
 t(n.itp_lagrange([(0,8),(1,13),(2,40),(3,107),(4,232),(5,433)], 3.25), 132.1, 'interpolation.lagrange.4')
 
-# Regression
-t(n.reg_leastsquares([(0,1),(2,5.1),(4,9),(6,13),(8,17),(10,21)], 6, 1), 8.2, 'regression.leastsquares.1')
-t(n.reg_leastsquares([(0,0),(2,8),(3,10),(4,14),(5,17),(7,22),(8,26),(9,29),(10,32),(12,35)], 6, 1), 11.9, 'regression.leastsquares.2')
-t(n.reg_leastsquares([(2,1),(3,6),(5,22),(6,33),(8,61)], 6, 2), -107, 'regression.leastsquares.3')
-t(n.reg_leastsquares([(0,8),(1,22),(2,134),(3,560),(4,1660),(5,3938),(6,8042),(7,14764)], 17), 675110, 'regression.leastsquares.4')
+# # Regression
+t(n.reg_leastsquares([(0,1),(2,5.1),(4,9),(6,13),(8,17),(10,21)], 6, 1), 13, 'regression.leastsquares.1')
+t(n.reg_leastsquares([(0,0),(2,8),(3,10),(4,14),(5,17),(7,22),(8,26),(9,29),(10,32),(12,35)], 6, 1), 19.3, 'regression.leastsquares.2')
+t(n.reg_leastsquares([(2,1),(3,6),(5,22),(6,33),(8,61)], 6, 2), 33, 'regression.leastsquares.3')
+t(n.reg_leastsquares([(0,8),(1,22),(2,134),(3,560),(4,1660),(5,3938),(6,8042),(7,14764)], 17), 503174, 'regression.leastsquares.4')
+t(n.reg_leastsquares([(1,1),(2,4),(3,9),(4,16),(5,25),(6,36)], 7), 49, 'regression.leastsquares.5')
 
 # finish
 finish()

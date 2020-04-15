@@ -25,5 +25,5 @@ def leastsquares(pairs, x, deg=None):
 
   X = gauss(A, C)
 
-  result = polynomial([xi[0] for xi in X], x)
+  result = polynomial([xi[0] for xi in X][::-1], x)
   return result
