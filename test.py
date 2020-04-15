@@ -48,6 +48,7 @@ t(n.polynomial([2, 1, 3], 5), 58, 'utils.math.polynomial.4')
 # Nonlinear
 t(n.nl_graph('x^2 - 6x + 5', dx=1, epsilon=0.001, x=0), 1, 'nonlinear.bracketing.graph.1')
 t(n.nl_graph('x^2 - 6x + 5', dx=1, epsilon=0.001, x=2), 5, 'nonlinear.bracketing.graph.2')
+t(n.nl_graph('x^2 - 8x + 15', dx=1, epsilon=0.001, x=2), 3, 'nonlinear.bracketing.graph.3')
 
 t(n.nl_bisection('x^3 - 6.5x^2 + 13.5x - 9', epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.bisection.1')
 t(n.nl_bisection('x^3 - 6.5x^2 + 13.5x - 9', epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.bisection.2')
@@ -56,6 +57,7 @@ t(n.nl_bisection('x^3 - 6.5x^2 + 13.5x - 9', epsilon=0.001, a=2.5, b=6), 3, 'non
 t(n.nl_regulafalsi('x^3 - 6.5x^2 + 13.5x - 9', epsilon=0.001, a=0, b=1.75), 1.5, 'nonlinear.bracketing.regulafalsi.1')
 t(n.nl_regulafalsi('x^3 - 6.5x^2 + 13.5x - 9', epsilon=0.001, a=1.75, b=2.5), 2, 'nonlinear.bracketing.regulafalsi.2')
 t(n.nl_regulafalsi('x^3 - 6.5x^2 + 13.5x - 9', epsilon=0.001, a=2.5, b=6), 3, 'nonlinear.bracketing.regulafalsi.3')
+t(n.nl_regulafalsi('x^2 - 8x + 15', epsilon=0.01, a=1, b=4), 3, 'nonlinear.bracketing.regulafalsi.4')
 
 t(n.nl_fixedpoint('(2x + 3)^(1/2)', epsilon=0.005, x=4), 3, 'nonlinear.iterative.fixedpoint.1')
 t(n.nl_fixedpoint('(3 / (x - 2))', epsilon=0.005, x=4), -1, 'nonlinear.iterative.fixedpoint.2')
@@ -85,7 +87,7 @@ t(n.m_transpose('1,2,3; 4,5,6'), m('1,4; 2,5; 3,6'), 'matrix.operations.transpos
 t(n.m_rowconcat('1,2,3; 4,5,6; 7,8,9', '10,20,30; 40,50,60; 70,80,90'), n.m('1,2,3,10,20,30; 4,5,6,40,50,60; 7,8,9,70,80,90'), 'matrix.operations.rowconcat.1')
 t(n.m_colconcat('1,2,3; 4,5,6; 7,8,9', '10,20,30; 40,50,60; 70,80,90'), n.m('1,2,3; 4,5,6; 7,8,9; 10,20,30; 40,50,60; 70,80,90'), 'matrix.operations.colconcat.1')
 
-t(n.m_rowslice('1,2,3; 4,5,6', 0, 1), m('1;4'), 'matrix.operations.rowslice.1')
+t(n.m_rowslice('1,2,3; 4,5,6', start=0, stop=1), m('1;4'), 'matrix.operations.rowslice.1')
 
 t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell: cell * 5), m('5,10,15; 4,5,6'), 'matrix.operations.rowmap.1')
 t(n.m_rowmap('1,2,3; 4,5,6', 1, lambda cell, j: j * 7), m('7,14,21; 4,5,6'), 'matrix.operations.rowmap.2')
@@ -100,11 +102,13 @@ t(n.ls_gaussseidel('-1,4,-3; 1,-1,4; 3,1,-2', '-8; 1; 9', '1;1;1', epsilon=0.001
 t(n.ls_gaussseidel('2,1,4; 1,6,3; 5,-2,1', '14; 20; 8', '0; 0; 0', epsilon=0.09), m('2.05; 2.01; 1.97'), 'linearsystems.gaussseidel.2')
 
 # Integration
-t(n.itg_trapezoidal('1 / (1 + x^2)', 0, 1, 4), 0.78, 'integration.trapezoidal.1')
-t(n.itg_trapezoidal('x^3 + 2x^2 - x - 2', -2, -1, 4), 0.39, 'integration.trapezoidal.2')
-t(n.itg_simpson('x^3', 0, 2, 4), 4, 'integration.simpson.1')
-t(n.itg_simpson('x^3', -1, 0, 4), -0.25, 'integration.simpson.2')
-t(n.itg_simpson('x^3 + 2x^2 - x - 2', -2, -1, 4), 0.41, 'integration.simpson.3')
+t(n.itg_trapezoidal('1 / (1 + x^2)', x0=0, xn=1, n=4), 0.78, 'integration.trapezoidal.1')
+t(n.itg_trapezoidal('x^3 + 2x^2 - x - 2', x0=-2, xn=-1, n=4), 0.39, 'integration.trapezoidal.2')
+t(n.itg_trapezoidal('x^2 + 5x + 5', x0=1, xn=2, n=10), 14.8, 'integration.trapezoidal.3')
+t(n.itg_simpson('x^3', x0=0, xn=2, n=4), 4, 'integration.simpson.1')
+t(n.itg_simpson('x^3', x0=-1, xn=0, n=4), -0.25, 'integration.simpson.2')
+t(n.itg_simpson('x^3 + 2x^2 - x - 2', x0=-2, xn=-1, n=4), 0.41, 'integration.simpson.3')
+t(n.itg_simpson('x^2 + 5x + 5', x0=1, xn=2, n=1000), 14.8, 'integration.simpson.4')
 
 # Differentiation
 t(n.diff_backward('x^2 - 2x - 3', 2), 2, 'differentiation.euler.backward.1')
@@ -113,6 +117,7 @@ t(n.diff_forward('x^2 - 2x - 3', 2), 2, 'differentiation.euler.forward.1')
 t(n.diff_forward('x^2 - 2x - 3', 5), 8, 'differentiation.euler.forward.2')
 t(n.diff_midpoint('x^2 - 2x - 3', 2), 2, 'differentiation.euler.midpoint.1')
 t(n.diff_midpoint('x^2 - 2x - 3', 5), 8, 'differentiation.euler.midpoint.2')
+t(n.diff_midpoint('x^2 - 8x + 15', 0.1), -7.8, 'differentiation.euler.midpoint.3')
 
 # Finite differences
 t(n.fd_degree([(0,0),(1,1),(2,2),(3,3)]), 1, 'finitedifferences.degree.1')

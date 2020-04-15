@@ -1,4 +1,6 @@
 ### implement
+- matrix
+  - check determinant first to see if there is a inverse matrix
 - solving systems of linear equations
   - cramer method
   - gauss-jordan elimination method
